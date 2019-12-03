@@ -1,0 +1,3 @@
+.gradle
+client/node_modules
+server/build

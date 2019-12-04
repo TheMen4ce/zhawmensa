@@ -4,11 +4,10 @@ class Menu {
 
     BigDecimal externalPrice
     BigDecimal internalPrice
-    BigDecimal partnerPrice
-    String label
-    String name
+    BigDecimal studentPrice
+    Date date
+    String title
     String sideDishes
-
 
     static belongsTo = [menuPlan: MenuPlan]
 

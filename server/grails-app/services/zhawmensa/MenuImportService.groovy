@@ -13,7 +13,7 @@ class MenuImportService {
 
     void importMenuPlans() {
 
-        GastronomicFacility.findAll().each { GastronomicFacility facility ->
+        GastronomicFacility.findAllByProvider(Provider.SV).each { GastronomicFacility facility ->
             importMenuPlan(facility)
         }
     }

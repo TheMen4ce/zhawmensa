@@ -19,7 +19,7 @@ class MenuImportSV implements MenuImport {
         List<Menu> menus = []
 
         Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
-        throwIfError(rootNode)
+        throwIfError(rootNode, facility)
 
         rootNode.week.day.each { Node day ->
             Date menuDate = parseDate(day)
@@ -60,9 +60,10 @@ class MenuImportSV implements MenuImport {
         }
     }
 
-    private void throwIfError(Node rootNode) {
+    private void throwIfError(Node rootNode, GastronomicFacility facility) {
         if (rootNode.@status == "error") {
-            throw new BusinessException("SV Service threw an error: ${rootNode.@errormsg}")
+            throw new BusinessException("Couldn't load data for ${facility.name} with ID ${facility.locationId}. " +
+                    "SV Service threw an error: ${rootNode.@errormsg}")
         }
     }
 

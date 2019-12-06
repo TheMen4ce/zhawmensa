@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>tag:zfv.ch,2019-12-06:/feed/201912065539000000</id>
+    <title type="text">Mensa Pädagogische Hochschule Zürich - 06.12.2019 </title>
+    <subtitle type="html">Lagerstrasse 10, CH-8004 Zürich</subtitle>
+    <updated>2019-12-02CET00:00:00+01:00</updated>
+    <entry>
+        <title>Mensa Feed - Mensa Pädagogische Hochschule Zürich</title>
+        <updated>2019-12-02CET00:00:00+01:00</updated>
+        <published>2019-12-06CET11:55:39+01:00</published>
+        <summary type="xhtml">​
+
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h3>
+                    einfach gut
+                    <span class="price" style="font-weight: normal;">
+                        | CHF 8.60 / 10.60 / 11.60
+                    </span>
+                </h3>
+                <p>
+                    gebratenes Zander-Filet
+                    <br />
+                    mit Mandel-Butter
+                    <br />
+                    Wirsinggemüse
+                    <br />
+                    und Dill-Kartoffeln
+                    <br />
+                    <br />
+                    Fisch: Ost-Europa
+                </p>
+                <h3>
+                    natürlich vegi
+                    <span class="price" style="font-weight: normal;">
+                        | CHF 8.60 / 10.80 / 11.80
+                    </span>
+                </h3>
+                <p>
+                    Süsskartoffel-Curry mit Spinat und Kichererbsen
+                    <br />
+                    garniert mit Zwiebelsprossen
+                    <br />
+                    <br />
+                </p>
+                <h3>
+                    voll anders
+                    <span class="price" style="font-weight: normal;">
+                        | CHF 10.80 / 12.80 / 13.80
+                    </span>
+                </h3>
+                <p>
+                    PH Schnitzel mit
+                    <br />
+                    Zitronen-Schnitz
+                    <br />
+                    Karotten-Erbsen Gemüse
+                    <br />
+                    und Pommes Frites
+                    <br />
+                    <br />
+                    Fleisch: Schweiz / Schwein
+                </p>
+            </div>
+        </summary>
+    </entry>
+</feed>

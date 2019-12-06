@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svdoc>
+    <settings id="ge" enabled="1">
+        <workdays>5</workdays>
+        <prices>
+            <price enabled="1" id="29" order="1" dropsort="10">
+                <description>100G</description>
+            </price>
+            <price enabled="1" id="21" order="2" dropsort="20">
+                <description>CHF</description>
+            </price>
+            <price enabled="1" id="18" order="3" dropsort="30">
+                <description>DOZ</description>
+            </price>
+            <price enabled="1" id="46" order="4" dropsort="40">
+                <description>ERW</description>
+            </price>
+            <price enabled="1" id="30" order="5" dropsort="50">
+                <description>ET</description>
+            </price>
+            <price enabled="1" id="3" order="6" dropsort="60">
+                <description>EXT</description>
+            </price>
+            <price enabled="1" id="4" order="7" dropsort="70">
+                <description>FLU</description>
+            </price>
+            <price enabled="1" id="45" order="8" dropsort="80">
+                <description>GR.</description>
+            </price>
+            <price enabled="1" id="0" order="9" dropsort="90">
+                <description>INT</description>
+            </price>
+            <price enabled="1" id="44" order="10" dropsort="100">
+                <description>KL.</description>
+            </price>
+            <price enabled="1" id="-4" order="11" dropsort="110">
+                <description>LAGE</description>
+            </price>
+            <price enabled="1" id="19" order="12" dropsort="120">
+                <description>LEHR</description>
+            </price>
+            <price enabled="1" id="27" order="13" dropsort="130">
+                <description>MA</description>
+            </price>
+            <price enabled="1" id="28" order="14" dropsort="140">
+                <description>MA</description>
+            </price>
+            <price enabled="1" id="26" order="15" dropsort="150">
+                <description>SBB</description>
+            </price>
+            <price enabled="1" id="20" order="16" dropsort="160">
+                <description>SCHU</description>
+            </price>
+            <price enabled="1" id="-2" order="17" dropsort="170">
+                <description>SP-B</description>
+            </price>
+            <price enabled="1" id="-3" order="18" dropsort="180">
+                <description>SP-N</description>
+            </price>
+            <price enabled="1" id="6" order="19" dropsort="190">
+                <description>STUD</description>
+            </price>
+            <price enabled="1" id="43" order="20" dropsort="200">
+                <description>VEGI</description>
+            </price>
+        </prices>
+        <address>
+            <street>
+                <![CDATA[Einsiedlerstrasse 31]]>
+            </street>
+            <zip>8820</zip>
+            <city>
+                <![CDATA[Wädenswil]]>
+            </city>
+            <phone>+41 58 934 54 68</phone>
+            <email>michael.krauer@sv-group.ch</email>
+            <company>
+                <![CDATA[ZHAW Wädenswil]]>
+            </company>
+            <name>
+                <![CDATA[Mensa Vista]]>
+            </name>
+        </address>
+        <openings>
+            <days>Finden Sie auf unserer Microsite:&#13;
+                http://vista.sv-restaurant.ch</days>
+            <hours></hours>
+        </openings>
+        <options>
+            <premiummenu enabled="0"/>
+        </options>
+        <offers>
+            <offer id="1" enabled="1">
+                <description>Kitchen</description>
+            </offer>
+            <offer id="2" enabled="1">
+                <description>Favorite</description>
+            </offer>
+            <offer id="3" enabled="1">
+                <description>Green</description>
+            </offer>
+            <offer id="4" enabled="1">
+                <description>Hot &amp; Cold</description>
+            </offer>
+        </offers>
+    </settings>
+    <week id="ge">
+        <periode>02.12. - 06.12.2019</periode>
+        <messages>
+            <message id="1">
+                <title>
+                    <![CDATA[Rabatte Partnerorganisationen ZHAW]]>
+                </title>
+                <text>
+                    <![CDATA[Schüler - 5.00 CHF
+Mitarbeitende - 4.00 CHF
+auf die externen Preise]]>
+                </text>
+            </message>
+            <message id="2">
+                <title>
+                    <![CDATA[]]>
+                </title>
+                <text>
+                    <![CDATA[]]>
+                </text>
+            </message>
+            <message id="3">
+                <title>
+                    <![CDATA[]]>
+                </title>
+                <text>
+                    <![CDATA[]]>
+                </text>
+            </message>
+        </messages>
+        <day id="1">
+            <name>Montag</name>
+            <date>02.12.2019</date>
+            <menus>
+                <menu id="1" offer="1">
+                    <description>
+                        <![CDATA[Kalbsgeschnetzeltes «Zürcher Art»
+mit Champignons-Rahmsauce,
+Nudeln
+und Blattspinat]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[mit Champignons-Rahmsauce,
+Nudeln
+und Blattspinat]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Kalbsgeschnetzeltes «Zürcher Art»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>12.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>13.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>19.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="2" offer="2">
+                    <description>
+                        <![CDATA[«Hawaii»
+Poulethacktätschli mit Ananas und Currysauce,
+Basmatireis
+und Asiagemüse]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Poulethacktätschli mit Ananas und Currysauce,
+Basmatireis
+und Asiagemüse]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[«Hawaii»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="3" offer="3">
+                    <description>
+                        <![CDATA[Kartoffel-Gemüsegratin
+dazu Blattspinat mit Chili]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[dazu Blattspinat mit Chili]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Kartoffel-Gemüsegratin]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegetarian"/>
+                    </logos>
+                </menu>
+                <menu id="4" offer="4">
+                    <description>
+                        <![CDATA[Your Choice
+Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Your Choice]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="0">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="6">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>2.50</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos/>
+                </menu>
+            </menus>
+        </day>
+        <day id="2">
+            <name>Dienstag</name>
+            <date>03.12.2019</date>
+            <menus>
+                <menu id="1" offer="1">
+                    <description>
+                        <![CDATA[Rindfleischvogel
+mit Steinpilzsauce,
+Safranrisotto
+und Broccoli]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[mit Steinpilzsauce,
+Safranrisotto
+und Broccoli]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Rindfleischvogel]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>12.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>13.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>19.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Rind/Schwein, Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="2" offer="2">
+                    <description>
+                        <![CDATA[«Greek»
+Cappeelletti mit Tomaten-Mozzarellafüllung an Tomatensauce mit Oliven und Cherrytomaten, garniert mit Feta
+dazu Menusalat]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Cappeelletti mit Tomaten-Mozzarellafüllung an Tomatensauce mit Oliven und Cherrytomaten, garniert mit Feta
+dazu Menusalat]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[«Greek»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegetarian"/>
+                    </logos>
+                </menu>
+                <menu id="3" offer="3">
+                    <description>
+                        <![CDATA[Kürbis-Chiaburger
+mit Kräuterjus,
+Safranrisotto
+und Broccoli]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[mit Kräuterjus,
+Safranrisotto
+und Broccoli]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Kürbis-Chiaburger]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegetarian"/>
+                    </logos>
+                </menu>
+                <menu id="4" offer="4">
+                    <description>
+                        <![CDATA[Your Choice
+Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Your Choice]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="0">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="6">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>2.50</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos/>
+                </menu>
+            </menus>
+        </day>
+        <day id="3">
+            <name>Mittwoch</name>
+            <date>04.12.2019</date>
+            <menus>
+                <menu id="1" offer="1">
+                    <description>
+                        <![CDATA[«Lasagne Spinachi»
+dazu Menusalat]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[dazu Menusalat]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[«Lasagne Spinachi»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>12.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>13.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>19.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegetarian"/>
+                    </logos>
+                </menu>
+                <menu id="2" offer="2">
+                    <description>
+                        <![CDATA[«Pfefferbraten»
+Schweins-Pfefferbraten mit Madeirasauce,
+Kartoffelstock
+und Bohnen]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Schweins-Pfefferbraten mit Madeirasauce,
+Kartoffelstock
+und Bohnen]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[«Pfefferbraten»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="3" offer="3">
+                    <description>
+                        <![CDATA[Orientalisches
+Gemüseragout
+mit Datteln und Couscous]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[mit Datteln und Couscous]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Orientalisches
+Gemüseragout]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegan"/>
+                    </logos>
+                </menu>
+                <menu id="4" offer="4">
+                    <description>
+                        <![CDATA[Your Choice
+Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Your Choice]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="0">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="6">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>2.50</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos/>
+                </menu>
+            </menus>
+        </day>
+        <day id="4">
+            <name>Donnerstag</name>
+            <date>05.12.2019</date>
+            <menus>
+                <menu id="1" offer="1">
+                    <description>
+                        <![CDATA[«Wädi goes Wien»
+Backhendelspies mit Preiselbeern
+dazu orginal Kartoffel-Gurkensalat]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Backhendelspies mit Preiselbeern
+dazu orginal Kartoffel-Gurkensalat]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[«Wädi goes Wien»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>12.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>13.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>19.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Poulet Schwiz Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="2" offer="2">
+                    <description>
+                        <![CDATA[«Don Fracseco»
+Spaghetti, Rahm, Erbsen,  Champignons, Zwiebeln, Knoblauch und Kräutern
+dazu Menusalat]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Spaghetti, Rahm, Erbsen,  Champignons, Zwiebeln, Knoblauch und Kräutern
+dazu Menusalat]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[«Don Fracseco»]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="3" offer="3">
+                    <description>
+                        <![CDATA[Samosa
+mit Sweet Chili Sauce,
+Gemüsereis
+und Kefen]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[mit Sweet Chili Sauce,
+Gemüsereis
+und Kefen]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Samosa]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegetarian"/>
+                    </logos>
+                </menu>
+                <menu id="4" offer="4">
+                    <description>
+                        <![CDATA[Your Choice
+Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Your Choice]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="0">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="6">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>2.50</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos/>
+                </menu>
+            </menus>
+        </day>
+        <day id="5">
+            <name>Freitag</name>
+            <date>06.12.2019</date>
+            <menus>
+                <menu id="2" offer="2">
+                    <description>
+                        <![CDATA[Fleischkäse Cordon bleu
+mit Pommes frites
+und Karotten]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[mit Pommes frites
+und Karotten]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Fleischkäse Cordon bleu]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance>
+                        <location>Herkunft Fleisch: Kalb/Schwein, Schweiz</location>
+                    </provenance>
+                    <logos/>
+                </menu>
+                <menu id="3" offer="3">
+                    <description>
+                        <![CDATA[Semmelknödel
+dazu Pilzragout mit Kräutern
+und Menusalat]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[dazu Pilzragout mit Kräutern
+und Menusalat]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Semmelknödel]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="6">
+                            <value>7.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="0">
+                            <value>8.00</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>14.00</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos>
+                        <logo place="left" identifier="vegetarian"/>
+                    </logos>
+                </menu>
+                <menu id="4" offer="4">
+                    <description>
+                        <![CDATA[Your Choice
+Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </description>
+                    <trimmings>
+                        <![CDATA[Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen
+Preis pro 100g]]>
+                    </trimmings>
+                    <title>
+                        <![CDATA[Your Choice]]>
+                    </title>
+                    <combodesc>
+                        <![CDATA[]]>
+                    </combodesc>
+                    <prices>
+                        <price id="0">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="6">
+                            <value>2.30</value>
+                            <combovalue/>
+                        </price>
+                        <price id="3">
+                            <value>2.50</value>
+                            <combovalue/>
+                        </price>
+                    </prices>
+                    <provenance/>
+                    <logos/>
+                </menu>
+            </menus>
+        </day>
+    </week>
+</svdoc>

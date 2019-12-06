@@ -4,6 +4,8 @@ class MenuImportZFV implements MenuImport {
     private static final String SERVICE_URL = "https://zfv.ch/en/menus/rssMenuPlan"
     private static def ALL_EXCEPT_DIGITS_AND_SLASH = /[^0-9.\/]/
     private static def DAYS_PROVIDED = 1..6
+    private static List<String> EXPECTED_MENU_NODES = ['h3', 'p']
+    private static String MENU_NODE_HEADER = "h3"
 
     XMLImporter xmlImporter
 
@@ -28,8 +30,6 @@ class MenuImportZFV implements MenuImport {
             Date menuDate = today.getTime()
 
             Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?menuId=${facility.locationId}&dayOfWeek=${day}")
-
-            // TODO add validation that same menu cannot be imported twice
             menus.addAll(importMenusOfDay((Node) rootNode.entry.summary.div[0], menuDate))
         }
 
@@ -39,7 +39,9 @@ class MenuImportZFV implements MenuImport {
     private List<Menu> importMenusOfDay(Node menusOfADay, Date menuDate) {
         List<Menu> menus = []
         menusOfADay.eachWithIndex { Node menuNode, int index ->
-            if (menuNode.name().localPart == "h3") {
+            validateMenuNode(menuNode)
+
+            if (menuNode.name().localPart == MENU_NODE_HEADER) {
                 menus.add(importMenu(menuNode, (Node) menusOfADay.value()[index + 1], menuDate))
             }
         }
@@ -73,5 +75,11 @@ class MenuImportZFV implements MenuImport {
         sideDishes.inject("", { String result, String text ->
             result += text.trim() ? text.trim() + "\n" : ""
         }).trim()
+    }
+
+    private void validateMenuNode(Node menuNode) {
+        if(!EXPECTED_MENU_NODES.contains(menuNode.name().localPart)){
+            throw new BusinessException("Unexpected menu node in ZFV Import! Node: ${menuNode}")
+        }
     }
 }

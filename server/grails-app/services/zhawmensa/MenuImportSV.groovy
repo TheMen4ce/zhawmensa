@@ -18,14 +18,18 @@ class MenuImportSV implements MenuImport {
     List<Menu> importMenus(GastronomicFacility facility) {
         List<Menu> menus = []
 
-        Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?bnch=${facility.locationId}&authstring=" + AUTH)
-        checkForErrors(rootNode)
+        Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
+        throwIfError(rootNode)
 
         rootNode.week.day.each { Node day ->
             Date menuDate = parseDate(day)
 
             day.menus.menu.each { Node menu ->
-                menus.add(importMenu(menu, menuDate))
+                try {
+                    menus.add(importMenu(menu, menuDate))
+                } catch (Exception ignored) {
+                    throw new BusinessException("Couldn't parse response in SV Service import! Corrupt data in node: ${menu}")
+                }
             }
         }
 
@@ -44,19 +48,19 @@ class MenuImportSV implements MenuImport {
         return menu
     }
 
-    BigDecimal getPrice(Node menuNode,Price price) {
+    BigDecimal getPrice(Node menuNode, Price price) {
         return new BigDecimal(menuNode.prices.price.find { it.@id == price.id }.text())
     }
 
     private Date parseDate(Node day) {
         try {
             DATE_FORMAT.parse(day.date.text())
-        } catch(Exception ignored) {
+        } catch (Exception ignored) {
             throw new BusinessException("Couldn't parse date in SV Service import! Date: ${day.date}")
         }
     }
 
-    private void checkForErrors(Node rootNode) {
+    private void throwIfError(Node rootNode) {
         if (rootNode.@status == "error") {
             throw new BusinessException("SV Service threw an error: ${rootNode.@errormsg}")
         }
@@ -69,7 +73,7 @@ class MenuImportSV implements MenuImport {
 
         final String id
 
-        private Price(String id){
+        private Price(String id) {
             this.id = id
         }
     }

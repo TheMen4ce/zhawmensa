@@ -34,4 +34,7 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
+// logger for business specific code
+logger('zhawmensa', INFO, ['STDOUT'], false)
+
 root(ERROR, ['STDOUT'])

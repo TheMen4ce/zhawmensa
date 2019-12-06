@@ -10,7 +10,7 @@ class MenuImportSV implements MenuImport {
 
     XMLImporter xmlImporter
 
-    MenuImportSV(XMLImporter xmlImporter){
+    MenuImportSV(XMLImporter xmlImporter) {
         this.xmlImporter = xmlImporter
     }
 
@@ -18,11 +18,11 @@ class MenuImportSV implements MenuImport {
     List<Menu> importMenus(GastronomicFacility facility) {
         List<Menu> menus = []
 
-        Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
+        Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?bnch=${facility.locationId}&authstring=" + AUTH)
+        checkForErrors(rootNode)
 
         rootNode.week.day.each { Node day ->
-            // TODO errorhandling
-            Date menuDate = DATE_FORMAT.parse(day.date.text())
+            Date menuDate = parseDate(day)
 
             day.menus.menu.each { Node menu ->
                 menus.add(importMenu(menu, menuDate))
@@ -43,5 +43,19 @@ class MenuImportSV implements MenuImport {
         menu.studentPrice = new BigDecimal(menuNode.prices.price.find { it.@id == '6' }.text())
 
         return menu
+    }
+
+    private Date parseDate(Node day) {
+        try {
+            DATE_FORMAT.parse(day.date.text())
+        } catch(Exception ignored) {
+            throw new BusinessException("Couldn't parse date in SV Service import! Date: ${day.date}")
+        }
+    }
+
+    private void checkForErrors(Node rootNode) {
+        if (rootNode.@status == "error") {
+            throw new BusinessException("SV Service threw an error: ${rootNode.@errormsg}")
+        }
     }
 }

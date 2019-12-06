@@ -1,6 +1,6 @@
 package zhawmensa
 
-class ImportController {
+class ImportController implements ExceptionHandlingController {
 	static responseFormats = ['text']
 
     MenuImportService menuImportService

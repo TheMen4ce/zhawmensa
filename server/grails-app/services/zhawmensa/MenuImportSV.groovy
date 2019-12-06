@@ -37,12 +37,15 @@ class MenuImportSV implements MenuImport {
         menu.date = menuDate
         menu.title = menuNode.title.text().trim()
         menu.sideDishes = menuNode.trimmings.text().trim()
-        // TODO extract price retrieval into own method. Use configurable constant val for id.
-        menu.internalPrice = new BigDecimal(menuNode.prices.price.find { it.@id == '0' }.text())
-        menu.externalPrice = new BigDecimal(menuNode.prices.price.find { it.@id == '3' }.text())
-        menu.studentPrice = new BigDecimal(menuNode.prices.price.find { it.@id == '6' }.text())
+        menu.internalPrice = getPrice(menuNode, Price.INTERNAL)
+        menu.externalPrice = getPrice(menuNode, Price.EXTERNAL)
+        menu.studentPrice = getPrice(menuNode, Price.STUDENT)
 
         return menu
+    }
+
+    BigDecimal getPrice(Node menuNode,Price price) {
+        return new BigDecimal(menuNode.prices.price.find { it.@id == price.id }.text())
     }
 
     private Date parseDate(Node day) {
@@ -56,6 +59,18 @@ class MenuImportSV implements MenuImport {
     private void checkForErrors(Node rootNode) {
         if (rootNode.@status == "error") {
             throw new BusinessException("SV Service threw an error: ${rootNode.@errormsg}")
+        }
+    }
+
+    private static enum Price {
+        INTERNAL('0'),
+        EXTERNAL('3'),
+        STUDENT('6')
+
+        final String id
+
+        private Price(String id){
+            this.id = id
         }
     }
 }

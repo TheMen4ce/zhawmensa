@@ -1,8 +1,16 @@
 package zhawmensa
 
+import grails.util.Environment
+
 class BootStrap {
 
     def init = { servletContext ->
+        if (Environment.current != Environment.TEST) {
+            createFacilitiesIfEmpty()
+        }
+    }
+
+    private void createFacilitiesIfEmpty() {
         if (GastronomicFacility.findAll().size() == 0) {
             GastronomicFacility.withNewTransaction {
                 GastronomicFacility.saveAll(
@@ -20,8 +28,8 @@ class BootStrap {
                 )
             }
         }
-
     }
+
     def destroy = {
     }
 }

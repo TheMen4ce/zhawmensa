@@ -21,14 +21,15 @@ class MenuImportSV implements MenuImport {
         Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
         throwIfError(rootNode, facility)
 
-        Map<String, String> labelMap = readOffersToLabelMap(rootNode)
+        Map<String, String> labelMap = readObjectsIntoIdMap((List<Node>) rootNode.settings.offers.offer)
+        Map<String, String> priceMap = readObjectsIntoIdMap((List<Node>) rootNode.settings.prices.price)
 
         rootNode.week.day.each { Node day ->
             Date menuDate = parseDate(day)
 
             day.menus.menu.each { Node menu ->
                 try {
-                    menus.add(importMenu(menu, menuDate, labelMap))
+                    menus.add(importMenu(menu, menuDate, labelMap, priceMap))
                 } catch (Exception ignored) {
                     throw new BusinessException("Couldn't parse response in SV Service import! Corrupt data in node: ${menu}")
                 }
@@ -39,30 +40,30 @@ class MenuImportSV implements MenuImport {
     }
 
     /**
-     * Reads the label names states as offers at the top of the XML
+     * Reads objects with an ID and description (i.e. prices or offers) into a map for later use
      * @return Map<"id", "description">
      */
-    private Map<String,String> readOffersToLabelMap(Node rootNode) {
-        return rootNode.settings.offers.offer.collectEntries { Node offer ->
+    private Map<String,String> readObjectsIntoIdMap(List<Node> nodes) {
+        return nodes.collectEntries { Node offer ->
             [(offer.@id): offer.description.text()]
         }
     }
 
-    private Menu importMenu(Node menuNode, Date menuDate, Map<String,String> labelMap) {
+    private Menu importMenu(Node menuNode, Date menuDate, Map labelMap, Map<String, String> priceMap) {
         Menu menu = new Menu()
         menu.date = menuDate
         menu.title = menuNode.title.text().trim()
         menu.label = labelMap.get(menuNode.@offer)
         menu.sideDishes = menuNode.trimmings.text().trim()
-        menu.internalPrice = getPrice(menuNode, Price.INTERNAL)
-        menu.externalPrice = getPrice(menuNode, Price.EXTERNAL)
-        menu.studentPrice = getPrice(menuNode, Price.STUDENT)
+        menu.studentPrice = getPrice(menuNode, priceMap.find{it.value == 'STUD'}.key)
+        menu.internalPrice = getPrice(menuNode, priceMap.find{it.value == 'INT'}.key)
+        menu.externalPrice = getPrice(menuNode, priceMap.find{it.value == 'EXT'}.key)
 
         return menu
     }
 
-    BigDecimal getPrice(Node menuNode, Price price) {
-        return new BigDecimal(menuNode.prices.price.find { it.@id == price.id }.text())
+    BigDecimal getPrice(Node menuNode, String priceId) {
+        return new BigDecimal(menuNode.prices.price.find { it.@id == priceId }.text())
     }
 
     private Date parseDate(Node day) {
@@ -80,15 +81,4 @@ class MenuImportSV implements MenuImport {
         }
     }
 
-    private static enum Price {
-        INTERNAL('0'),
-        EXTERNAL('3'),
-        STUDENT('6')
-
-        final String id
-
-        private Price(String id) {
-            this.id = id
-        }
-    }
 }

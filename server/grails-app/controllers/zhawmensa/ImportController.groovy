@@ -6,7 +6,11 @@ class ImportController implements ExceptionHandlingController {
     MenuImportService menuImportService
 
     def index() {
-        menuImportService.importMenuPlans()
-        render "OK"
+        int importedCount = menuImportService.importMenuPlans()
+        if(importedCount){
+            render("Imported ${importedCount} menus!")
+        }else{
+            render("nothing to import")
+        }
     }
 }

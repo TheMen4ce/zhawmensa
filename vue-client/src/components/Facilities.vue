@@ -4,6 +4,7 @@
                 @click="newFacility()">
             New Facility
         </button>
+        <MenuImport/>
         <b-table :data="facilities" striped default-sort="name">
             <template slot-scope="props">
                 <b-table-column field="id" label="ID" width="40" numeric sortable>
@@ -23,6 +24,7 @@
                 </b-table-column>
 
                 <b-table-column>
+                    <router-link :to="`/menus/${props.row.id}`">Menus</router-link>
                     <b-button icon-right="pencil" @click="editFacility(props.row)"/>
                     <b-button type="is-danger" @click="deleteFacility(props.row)" icon-right="delete"/>
                 </b-table-column>
@@ -46,9 +48,11 @@
     import service from '../services/facilities.service'
     import toaster from '../services/toaster.service'
     import FacilityModal from "./FacilityModal";
+    import MenuImport from "./MenuImport";
 
     export default {
         name: "Facilities",
+        components: {MenuImport},
         data() {
             return {
                 facilities: []
@@ -73,7 +77,6 @@
                 }
                 this.fetchFacilities()
             },
-
             deleteFacility(facility) {
                 service.delete(facility.id)
                     .then(() => {
@@ -84,7 +87,6 @@
                         toaster.error(`Couldn't delete ${facility.name}`)
                     })
             },
-
             editFacility(facility) {
                 this.openModal(false, facility)
             },

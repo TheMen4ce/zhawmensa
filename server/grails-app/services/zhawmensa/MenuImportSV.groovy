@@ -21,12 +21,14 @@ class MenuImportSV implements MenuImport {
         Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
         throwIfError(rootNode, facility)
 
+        Map<String, String> labelMap = readOffersToLabelMap(rootNode)
+
         rootNode.week.day.each { Node day ->
             Date menuDate = parseDate(day)
 
             day.menus.menu.each { Node menu ->
                 try {
-                    menus.add(importMenu(menu, menuDate))
+                    menus.add(importMenu(menu, menuDate, labelMap))
                 } catch (Exception ignored) {
                     throw new BusinessException("Couldn't parse response in SV Service import! Corrupt data in node: ${menu}")
                 }
@@ -36,10 +38,21 @@ class MenuImportSV implements MenuImport {
         return menus
     }
 
-    private Menu importMenu(Node menuNode, Date menuDate) {
+    /**
+     * Reads the label names states as offers at the top of the XML
+     * @return Map<"id", "description">
+     */
+    private Map<String,String> readOffersToLabelMap(Node rootNode) {
+        return rootNode.settings.offers.offer.collectEntries { Node offer ->
+            [(offer.@id): offer.description.text()]
+        }
+    }
+
+    private Menu importMenu(Node menuNode, Date menuDate, Map<String,String> labelMap) {
         Menu menu = new Menu()
         menu.date = menuDate
         menu.title = menuNode.title.text().trim()
+        menu.label = labelMap.get(menuNode.@offer)
         menu.sideDishes = menuNode.trimmings.text().trim()
         menu.internalPrice = getPrice(menuNode, Price.INTERNAL)
         menu.externalPrice = getPrice(menuNode, Price.EXTERNAL)

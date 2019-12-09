@@ -12,6 +12,8 @@ class UrlMappings {
 
         get "/menuplan/$id"(controller: 'menuPlan', action:'findAllByFacilityId')
 
+        get "/menus/$id"(controller: 'menu', action:'findAllByMenuPlanId')
+
         "/"(controller: 'application', action:'index')
         "500"(view: '/error')
         "404"(view: '/notFound')

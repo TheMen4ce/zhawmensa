@@ -8,7 +8,6 @@
                 {{ option.year }} | KW {{ option.calendarWeek }}
             </option>
         </b-select>
-        {{selectedMenuPlan}}
         <Menus v-if="selectedMenuPlan" :menuPlanId=selectedMenuPlan.id />
     </div>
 </template>

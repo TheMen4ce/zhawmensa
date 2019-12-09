@@ -9,17 +9,17 @@ class MenuImportService {
 
     int importMenuPlans() {
         int importedCount = 0
-        GastronomicFacility.findAll().each { GastronomicFacility facility ->
-            importedCount += importMenuPlan(facility)
-        }
-        return importedCount
-    }
-
-    protected int importMenuPlan(GastronomicFacility facility) {
         Calendar today = Calendar.getInstance()
         int year = today.get(Calendar.YEAR)
         int week = today.get(Calendar.WEEK_OF_YEAR)
 
+        GastronomicFacility.findAll().each { GastronomicFacility facility ->
+            importedCount += importMenuPlan(facility, year, week)
+        }
+        return importedCount
+    }
+
+    protected int importMenuPlan(GastronomicFacility facility, int year, int week) {
         if (MenuPlan.findByGastronomicFacilityAndYearAndCalendarWeek(facility, year, week)) {
             log.info("No menus to import for ${facility.name}")
             return 0

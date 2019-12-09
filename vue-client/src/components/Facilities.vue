@@ -36,7 +36,7 @@
                         <p>
                             <b-icon icon="emoticon-sad" size="is-large"/>
                         </p>
-                        <p>Nothing here.</p>
+                        <p>No facilities found.</p>
                     </div>
                 </section>
             </template>
@@ -68,34 +68,37 @@
                 })
             },
 
-            newOrUpdated(facility) {
-                let existingFacility = this.facilities.find(f => f.id === facility.id);
-                if (existingFacility) {
-                    existingFacility = facility;
-                } else {
-                    this.facilities.push(facility)
-                }
-                this.fetchFacilities()
-            },
             deleteFacility(facility) {
                 service.delete(facility.id)
                     .then(() => {
                         toaster.success("Minus one facility!");
-                        this.fetchFacilities()
+                        let deletedFacility = this.facilities.find(f => f.id === facility.id);
+                        const idx = this.facilities.indexOf(deletedFacility);
+                        this.facilities.splice(idx, 1);
                     })
                     .catch(() => {
                         toaster.error(`Couldn't delete ${facility.name}`)
                     })
             },
             editFacility(facility) {
-                this.openModal(false, facility)
+                this.openModal(false, facility, this.wasUpdated)
             },
 
             newFacility() {
-                this.openModal(true, {})
+                this.openModal(true, {}, this.wasCreated)
             },
 
-            openModal(isNewEntry, facility) {
+            wasUpdated(facility) {
+                let existingFacility = this.facilities.find(f => f.id === facility.id);
+                const idx = this.facilities.indexOf(existingFacility);
+                this.$set(this.facilities, idx, facility);
+            },
+
+            wasCreated(facility) {
+                this.facilities.push(facility)
+            },
+
+            openModal(isNewEntry, facility, callback) {
                 this.$buefy.modal.open({
                     parent: this,
                     component: FacilityModal,
@@ -103,7 +106,7 @@
                     props: {
                         isNewEntry: isNewEntry,
                         currentFacility: facility,
-                        newOrUpdated: this.newOrUpdated
+                        newOrUpdated: callback
                     }
                 })
             }

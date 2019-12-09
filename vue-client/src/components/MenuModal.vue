@@ -8,6 +8,9 @@
                 <b-field label="Title">
                     <b-input type="text" v-model="menu.title" placeholder="Title" required />
                 </b-field>
+                <b-field label="Label">
+                    <b-input type="text" v-model="menu.label" placeholder="Label" required />
+                </b-field>
                 <b-field label="Side dishes">
                     <b-input type="textarea" maxlength="500" v-model="menu.sideDishes" placeholder="Sidedishes" required/>
                 </b-field>

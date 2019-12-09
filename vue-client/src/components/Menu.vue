@@ -2,9 +2,10 @@
     <div class="card">
         <div class="card-content">
             <div class="title-row">
-                <div class="title is-6">{{menu.title}}</div>
+                <div class="menu-title title is-5">{{menu.title}}</div>
                 <b-icon class="edit-icon" icon="pencil" size="is-small" @click.native="editMenu(menu)"/>
             </div>
+            <p class="menu-subtitle subtitle is-6">{{menu.label}}</p>
             <div class="content">
                 <div class="side-dish">{{menu.sideDishes}}</div>
             </div>
@@ -48,6 +49,15 @@
     .title-row {
         display: flex;
         justify-content: space-between;
+    }
+
+    .menu-title{
+        margin: 0;
+    }
+
+    .menu-subtitle{
+        margin-bottom: 1rem;
+        font-style: italic;
     }
 
     .edit-icon {

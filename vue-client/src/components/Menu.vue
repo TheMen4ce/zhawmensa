@@ -6,6 +6,8 @@
             </div>
             <div class="content">
                 <div class="side-dish">{{menu.sideDishes}}</div>
+            </div>
+            <div>
                 <b-tag type="is-info">EXT: {{menu.externalPrice}}</b-tag>
                 <b-tag type="is-info">INT: {{menu.internalPrice}}</b-tag>
                 <b-tag type="is-info">STUD: {{menu.studentPrice}}</b-tag>
@@ -26,13 +28,24 @@
         white-space: pre-wrap;
         font-size: smaller;
     }
-    .card-content{
+
+    .card-content {
         padding: .5rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
-    .card{
+
+    .content {
+        flex-grow: 5;
+    }
+
+    .card {
         width: 15rem;
+        height: 100%;
     }
-    .tag{
+
+    .tag {
         margin-right: 0.2rem;
     }
 </style>

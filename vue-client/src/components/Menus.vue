@@ -5,7 +5,7 @@
             <table class="table">
                 <tr v-for="day in days" :key="day">
                     <td>{{getFormattedDay(day)}}</td>
-                    <td v-for="menu in getMenusFor(day)" :key="menu.id">
+                    <td class="menu-cell" v-for="menu in getMenusFor(day)" :key="menu.id">
                         <Menu :menu=menu />
                     </td>
                 </tr>
@@ -58,5 +58,7 @@
 </script>
 
 <style scoped>
-
+    .menu-cell {
+        height: 0;
+    }
 </style>

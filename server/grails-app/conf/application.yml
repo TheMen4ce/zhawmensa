@@ -94,6 +94,7 @@ environments:
             password: zhawmensa
             dbCreate: create-drop
             url: jdbc:postgresql://localhost:5432/zhawmensa
+            logSql: true
     test:
         dataSource:
             driverClassName: org.h2.Driver

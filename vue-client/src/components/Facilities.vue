@@ -24,7 +24,7 @@
                 </b-table-column>
 
                 <b-table-column>
-                    <router-link :to="`/menus/${props.row.id}`">Menus</router-link>
+                    <router-link :to="`/menuplan/${props.row.id}`">Menuplan</router-link>
                     <b-button icon-right="pencil" @click="editFacility(props.row)"/>
                     <b-button type="is-danger" @click="deleteFacility(props.row)" icon-right="delete"/>
                 </b-table-column>

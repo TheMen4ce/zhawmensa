@@ -1,8 +1,5 @@
 <template>
-    <div>
-    <h1>hey</h1>
-    {{$route.params.facilityId}}
-    </div>
+    <h1>Menu</h1>
 </template>
 
 <script>

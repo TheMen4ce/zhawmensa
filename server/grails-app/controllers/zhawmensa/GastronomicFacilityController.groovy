@@ -13,13 +13,11 @@ class GastronomicFacilityController {
 
     def save(GastronomicFacility facility) {
         GastronomicFacility createdFacility = gastronomicFacilityService.store(facility)
-        println "saved ${createdFacility.id}"
         respond createdFacility
     }
 
     def update(GastronomicFacility facility) {
         GastronomicFacility updatedFacility = gastronomicFacilityService.store(facility)
-        println "saved ${updatedFacility.id}"
         respond updatedFacility
     }
 
@@ -29,6 +27,5 @@ class GastronomicFacilityController {
         } else {
             render status: 404
         }
-
     }
 }

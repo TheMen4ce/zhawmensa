@@ -1,29 +1,64 @@
 <template>
     <div class="card">
         <div class="card-content">
-            <div class="media-content">
-                <p class="title is-6">{{menu.title}}</p>
+            <div class="title-row">
+                <div class="title is-6">{{menu.title}}</div>
+                <b-icon class="edit-icon" icon="pencil" size="is-small" @click.native="editMenu(menu)"/>
             </div>
             <div class="content">
                 <div class="side-dish">{{menu.sideDishes}}</div>
             </div>
             <div>
-                <b-tag type="is-info">EXT: {{menu.externalPrice}}</b-tag>
-                <b-tag type="is-info">INT: {{menu.internalPrice}}</b-tag>
                 <b-tag type="is-info">STUD: {{menu.studentPrice}}</b-tag>
+                <b-tag type="is-info">INT: {{menu.internalPrice}}</b-tag>
+                <b-tag type="is-info">EXT: {{menu.externalPrice}}</b-tag>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import MenuModal from "./MenuModal";
+
     export default {
         name: "Menu",
-        props: ['menu']
+        props: ['menu'],
+        methods: {
+            editMenu(menu) {
+                console.log(menu);
+                this.$buefy.modal.open({
+                    parent: this,
+                    component: MenuModal,
+                    hasModalCard: true,
+                    props: {
+                        isNewEntry: false,
+                        currentMenu: menu,
+                        newOrUpdated: this.wasUpdated
+                    }
+                })
+            },
+            wasUpdated(menu){
+                console.log(menu)
+            }
+        }
     }
 </script>
 
 <style scoped>
+    .title-row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .edit-icon {
+        float: right;
+        cursor: pointer;
+    }
+
+    .edit-icon:hover{
+        color: blue;
+    }
+
     .side-dish {
         white-space: pre-wrap;
         font-size: smaller;

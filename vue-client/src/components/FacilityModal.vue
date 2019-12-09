@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="processForm">
-        <div class="modal-card" style="width: auto">
+        <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">{{facility.name}}</p>
             </header>
@@ -47,12 +47,12 @@
         methods: {
             processForm() {
                 if (this.isNewEntry) {
-                    service.create(this.facility).then(this.afterSuccess);
+                    service.create(this.facility).then(this.onSuccess);
                 } else {
-                    service.update(this.facility).then(this.afterSuccess);
+                    service.update(this.facility).then(this.onSuccess);
                 }
             },
-            afterSuccess(response) {
+            onSuccess(response) {
                 this.newOrUpdated(response.data);
                 this.$parent.close();
             }

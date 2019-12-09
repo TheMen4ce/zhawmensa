@@ -12,4 +12,18 @@ class MenuService {
             }
         } as List<Menu>
     }
+
+    Menu store(Menu menu) {
+        return menu.save()
+    }
+
+    boolean deleteById(long id) {
+        Menu menuToDelete = Menu.findById(id)
+        if (menuToDelete) {
+            menuToDelete.delete()
+            return true
+        } else {
+            return false
+        }
+    }
 }

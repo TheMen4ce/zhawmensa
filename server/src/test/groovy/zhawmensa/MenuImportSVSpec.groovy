@@ -28,4 +28,16 @@ class MenuImportSVSpec extends Specification {
         menus.last().title == "Your Choice"
         menus.last().sideDishes == "Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen\nPreis pro 100g"
     }
+
+    void "should throw business exception on SV service error"(){
+        given:
+        Node node = new XmlParser().parse(new File("src/test/resources/SVXMLErrorResponse.xml"))
+        Mockito.when(xml.importXmlFrom(Mockito.any())).thenReturn(node)
+
+        when:
+        menuImportSV.importMenus(facility)
+
+        then:
+        thrown(BusinessException.class)
+    }
 }

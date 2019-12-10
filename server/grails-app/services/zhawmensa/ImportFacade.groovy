@@ -2,8 +2,8 @@ package zhawmensa
 
 class ImportFacade {
 
-    private MenuImportSV menuImportSV = new MenuImportSV(new XMLImporter())
-    private MenuImportZFV menuImportZFV = new MenuImportZFV(new XMLImporter())
+    private MenuImportSV menuImportSV = new MenuImportSV()
+    private MenuImportZFV menuImportZFV = new MenuImportZFV()
 
     List<Menu> importMenus(GastronomicFacility facility){
         switch (facility.provider){

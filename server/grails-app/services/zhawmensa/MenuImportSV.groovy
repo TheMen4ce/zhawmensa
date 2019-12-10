@@ -8,11 +8,7 @@ class MenuImportSV implements MenuImport {
     private static final String AUTH = "ahle_zhaw.ch@P1DQJgSGQWwdOYiUOA7nGDDnl80cGWEu7eRXUJbl1cSQoOyaZGbKh9H2acsTqLvF"
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy")
 
-    XMLImporter xmlImporter
-
-    MenuImportSV(XMLImporter xmlImporter) {
-        this.xmlImporter = xmlImporter
-    }
+    XmlImportService xmlImporter
 
     @Override
     List<Menu> importMenus(GastronomicFacility facility) {

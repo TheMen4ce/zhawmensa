@@ -4,18 +4,15 @@ import org.mockito.Mockito
 import spock.lang.Specification
 
 class MenuImportSVSpec extends Specification {
-    MenuImportSV menuImportSV
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 1234)
-    XMLImporter xml = Mockito.mock(XMLImporter.class)
 
-    def setup() {
-        menuImportSV = new MenuImportSV(xml)
-    }
+    XmlImportService xmlImportService = Mockito.mock(XmlImportService.class)
+    MenuImportSV menuImportSV
 
     void "should parse all menus from static SV service response"() {
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/SVXMLResponse.xml"))
-        Mockito.when(xml.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(xmlImportService.importXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
         List<Menu> menus = menuImportSV.importMenus(facility)
@@ -32,7 +29,7 @@ class MenuImportSVSpec extends Specification {
     void "should throw business exception on SV service error"(){
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/SVXMLErrorResponse.xml"))
-        Mockito.when(xml.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(xmlImportService.importXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
         menuImportSV.importMenus(facility)

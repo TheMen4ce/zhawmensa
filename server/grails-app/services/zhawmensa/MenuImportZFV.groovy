@@ -7,11 +7,7 @@ class MenuImportZFV implements MenuImport {
     private static List<String> EXPECTED_MENU_NODES = ['h3', 'p']
     private static String MENU_NODE_HEADER = "h3"
 
-    XMLImporter xmlImporter
-
-    MenuImportZFV(XMLImporter xmlImporter) {
-        this.xmlImporter = xmlImporter
-    }
+    XmlImportService xmlImportService
 
     List<Menu> importMenus(GastronomicFacility facility) {
         List<Menu> menus = []
@@ -29,7 +25,7 @@ class MenuImportZFV implements MenuImport {
             today.set(Calendar.MILLISECOND, 0)
             Date menuDate = today.getTime()
 
-            Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?menuId=${facility.locationId}&dayOfWeek=${day}")
+            Node rootNode = xmlImportService.importXmlFrom(SERVICE_URL + "?menuId=${facility.locationId}&dayOfWeek=${day}")
             menus.addAll(importMenusOfDay((Node) rootNode.entry.summary.div[0], menuDate))
         }
 

@@ -4,18 +4,15 @@ import org.mockito.Mockito
 import spock.lang.Specification
 
 class MenuImportZFVSpec extends Specification {
-    MenuImportZFV menuImportZFV
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 666)
-    XMLImporter xml = Mockito.mock(XMLImporter.class)
 
-    def setup() {
-        menuImportZFV = new MenuImportZFV(xml)
-    }
+    XmlImportService xmlImportService = Mockito.mock(XmlImportService.class)
+    MenuImportZFV menuImportZFV
 
     void "should parse all menus from static ZFV service response"() {
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/ZFVXMLResponse.xml"))
-        Mockito.when(xml.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(xmlImportService.importXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
         List<Menu> menus = menuImportZFV.importMenus(facility)

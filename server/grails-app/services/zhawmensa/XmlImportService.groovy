@@ -2,7 +2,7 @@ package zhawmensa
 
 import org.xml.sax.SAXParseException
 
-class XMLImporter {
+class XmlImportService {
 
     Node importXmlFrom(String uri) {
         try {

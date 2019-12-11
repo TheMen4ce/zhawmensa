@@ -1,0 +1,12 @@
+import zhawmensa.GastronomicFacility
+
+model{
+    GastronomicFacility gastronomicFacility
+}
+json{
+    id gastronomicFacility.id
+    version gastronomicFacility.version
+    name gastronomicFacility.name
+    locationId gastronomicFacility.locationId
+    provider gastronomicFacility.provider.name()
+}

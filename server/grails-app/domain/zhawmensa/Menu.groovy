@@ -7,7 +7,7 @@ class Menu {
     BigDecimal studentPrice
     Date date
     String title
-    String label = ""
+    String label
     String sideDishes
 
     static belongsTo = [menuPlan: MenuPlan]

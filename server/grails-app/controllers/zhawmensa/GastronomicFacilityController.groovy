@@ -1,7 +1,7 @@
 package zhawmensa
 
 
-class GastronomicFacilityController {
+class GastronomicFacilityController implements ExceptionHandlingController {
 
     GastronomicFacilityService gastronomicFacilityService
 
@@ -12,13 +12,11 @@ class GastronomicFacilityController {
     }
 
     def save(GastronomicFacility facility) {
-        GastronomicFacility createdFacility = gastronomicFacilityService.store(facility)
-        respond createdFacility
+        respond gastronomicFacilityService.store(facility)
     }
 
     def update(GastronomicFacility facility) {
-        GastronomicFacility updatedFacility = gastronomicFacilityService.store(facility)
-        respond updatedFacility
+        respond gastronomicFacilityService.store(facility)
     }
 
     def delete() {

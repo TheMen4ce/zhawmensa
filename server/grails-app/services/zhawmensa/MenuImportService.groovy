@@ -6,6 +6,8 @@ import grails.gorm.transactions.Transactional
 class MenuImportService {
 
     ImportFacadeService importFacadeService
+    GastronomicFacilityService gastronomicFacilityService
+    MenuPlanService menuPlanService
 
     int importMenuPlans() {
         int importedCount = 0
@@ -13,15 +15,15 @@ class MenuImportService {
         int year = today.get(Calendar.YEAR)
         int week = today.get(Calendar.WEEK_OF_YEAR)
 
-        GastronomicFacility.findAll().each { GastronomicFacility facility ->
+        gastronomicFacilityService.findAll().each { GastronomicFacility facility ->
             importedCount += importMenuPlan(facility, year, week)
         }
         return importedCount
     }
 
     protected int importMenuPlan(GastronomicFacility facility, int year, int week) {
-        if (MenuPlan.findByGastronomicFacilityAndYearAndCalendarWeek(facility, year, week)) {
-            log.info("No menus to import for ${facility.name}")
+        if (menuPlanService.menuPlanExistsFor(facility, year, week)) {
+            log.info("Menu plan for facility ${facility.name} in week ${year}/${week} already exists!")
             return 0
         }
 
@@ -32,7 +34,7 @@ class MenuImportService {
             menuPlan.addToMenus(menu)
         }
 
-        menuPlan.save()
+        menuPlanService.store(menuPlan)
         log.info("Imported ${newMenus.size()} menus for ${facility.name}")
         return newMenus.size()
     }

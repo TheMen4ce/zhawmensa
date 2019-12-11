@@ -92,7 +92,7 @@ environments:
             driverClassName: org.postgresql.Driver
             username: zhawmensa
             password: zhawmensa
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:postgresql://localhost:5432/zhawmensa
             logSql: true
     test:

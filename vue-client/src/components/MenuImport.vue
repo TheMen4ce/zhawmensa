@@ -24,9 +24,6 @@
                     .then(response => {
                         toaster.success(response.data);
                     })
-                    .catch(error => {
-                        toaster.error(error.response.data)
-                    })
                     .finally(() => {
                         this.isImporting = false;
                     })

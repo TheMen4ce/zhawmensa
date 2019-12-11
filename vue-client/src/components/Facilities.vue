@@ -76,9 +76,6 @@
                         const idx = this.facilities.indexOf(deletedFacility);
                         this.facilities.splice(idx, 1);
                     })
-                    .catch(() => {
-                        toaster.error(`Couldn't delete ${facility.name}`)
-                    })
             },
             editFacility(facility) {
                 this.openModal(false, facility, this.wasUpdated)

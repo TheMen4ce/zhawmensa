@@ -11,7 +11,7 @@
                 <b-field label="Label">
                     <b-input type="text" v-model="menu.label" placeholder="Label" required />
                 </b-field>
-                <b-field label="Side dishes">
+                <b-field label="Side Dishes">
                     <b-input type="textarea" maxlength="500" v-model="menu.sideDishes" placeholder="Sidedishes" required/>
                 </b-field>
                 <b-field label="Student Price">

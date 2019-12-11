@@ -6,10 +6,11 @@ import grails.gorm.transactions.Transactional
 class MenuService {
 
     List<Menu> findAllByMenuPlanId(long menuPlanId) {
-        return Menu.createCriteria().list{
-            menuPlan{
+        return Menu.createCriteria().list {
+            menuPlan {
                 eq('id', menuPlanId)
             }
+            order('label', 'asc')
         } as List<Menu>
     }
 

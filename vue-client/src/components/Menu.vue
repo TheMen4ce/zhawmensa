@@ -10,9 +10,9 @@
                 <div class="side-dish">{{menu.sideDishes}}</div>
             </div>
             <div>
-                <b-tag type="is-info">STUD: {{menu.studentPrice}}</b-tag>
-                <b-tag type="is-info">INT: {{menu.internalPrice}}</b-tag>
-                <b-tag type="is-info">EXT: {{menu.externalPrice}}</b-tag>
+                <b-tag type="is-info">STUD: {{menu.studentPrice.toFixed(2)}}</b-tag>
+                <b-tag type="is-info">INT: {{menu.internalPrice.toFixed(2)}}</b-tag>
+                <b-tag type="is-info">EXT: {{menu.externalPrice.toFixed(2)}}</b-tag>
             </div>
         </div>
     </div>

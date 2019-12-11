@@ -1,21 +1,24 @@
 package zhawmensa
 
+import grails.testing.services.ServiceUnitTest
 import org.mockito.Mockito
 import spock.lang.Specification
 
-class MenuImportSVSpec extends Specification {
+class MenuImportSVServiceSpec extends Specification implements ServiceUnitTest<MenuImportSVService> {
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 1234)
+    XmlImportService mockImportService = Mockito.mock(XmlImportService.class)
 
-    XmlImportService xmlImportService = Mockito.mock(XmlImportService.class)
-    MenuImportSV menuImportSV
+    void setup() {
+        service.xmlImportService = mockImportService
+    }
 
     void "should parse all menus from static SV service response"() {
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/SVXMLResponse.xml"))
-        Mockito.when(xmlImportService.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(mockImportService.importXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
-        List<Menu> menus = menuImportSV.importMenus(facility)
+        List<Menu> menus = service.importMenus(facility)
 
         then:
         menus.size() == 19
@@ -29,10 +32,10 @@ class MenuImportSVSpec extends Specification {
     void "should throw business exception on SV service error"(){
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/SVXMLErrorResponse.xml"))
-        Mockito.when(xmlImportService.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(mockImportService.importXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
-        menuImportSV.importMenus(facility)
+        service.importMenus(facility)
 
         then:
         thrown(BusinessException.class)

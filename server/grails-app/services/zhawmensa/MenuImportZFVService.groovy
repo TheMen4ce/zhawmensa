@@ -1,6 +1,6 @@
 package zhawmensa
 
-class MenuImportZFV implements MenuImport {
+class MenuImportZFVService implements MenuImport {
     private static final String SERVICE_URL = "https://zfv.ch/en/menus/rssMenuPlan"
     private static def ALL_EXCEPT_DIGITS_AND_SLASH = /[^0-9.\/]/
     private static def DAYS_PROVIDED = 1..6

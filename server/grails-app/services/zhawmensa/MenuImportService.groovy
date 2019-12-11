@@ -5,7 +5,7 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class MenuImportService {
 
-    ImportFacade importFacade = new ImportFacade()
+    ImportFacadeService importFacadeService
 
     int importMenuPlans() {
         int importedCount = 0
@@ -27,7 +27,7 @@ class MenuImportService {
 
         MenuPlan menuPlan = new MenuPlan(gastronomicFacility: facility, year: year, calendarWeek: week)
 
-        List<Menu> newMenus = importFacade.importMenus(facility)
+        List<Menu> newMenus = importFacadeService.importMenus(facility)
         newMenus.each { Menu menu ->
             menuPlan.addToMenus(menu)
         }

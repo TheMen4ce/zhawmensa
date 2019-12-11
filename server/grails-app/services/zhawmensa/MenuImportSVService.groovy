@@ -3,18 +3,18 @@ package zhawmensa
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
-class MenuImportSV implements MenuImport {
+class MenuImportSVService implements MenuImport {
     private static final String SERVICE_URL = "http://micro.sv-group.com/typo3conf/ext/netv_svg_menu/menu_xmlexp/menuexport.xml.php"
     private static final String AUTH = "ahle_zhaw.ch@P1DQJgSGQWwdOYiUOA7nGDDnl80cGWEu7eRXUJbl1cSQoOyaZGbKh9H2acsTqLvF"
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy")
 
-    XmlImportService xmlImporter
+    XmlImportService xmlImportService
 
     @Override
     List<Menu> importMenus(GastronomicFacility facility) {
         List<Menu> menus = []
 
-        Node rootNode = xmlImporter.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
+        Node rootNode = xmlImportService.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
         throwIfError(rootNode, facility)
 
         Map<String, String> labelMap = readObjectsIntoIdMap((List<Node>) rootNode.settings.offers.offer)

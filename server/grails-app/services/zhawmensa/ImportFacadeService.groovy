@@ -12,8 +12,7 @@ class ImportFacadeService {
             case Provider.ZFV:
                 return menuImportZFVService.importMenus(facility)
             default:
-                // todo make business exception
-                throw new RuntimeException("No import service available for provider: '${facility.provider}'!")
+                throw new IllegalStateException("No import service available for provider: '${facility.provider}'!")
         }
     }
 }

@@ -26,7 +26,6 @@
         props: ['menu'],
         methods: {
             editMenu(menu) {
-                console.log(menu);
                 this.$buefy.modal.open({
                     parent: this,
                     component: MenuModal,
@@ -39,7 +38,7 @@
                 })
             },
             wasUpdated(menu){
-                console.log(menu)
+                this.$emit('menu-updated', menu);
             }
         }
     }

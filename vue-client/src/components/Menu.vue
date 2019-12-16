@@ -33,12 +33,16 @@
                     props: {
                         isNewEntry: false,
                         currentMenu: menu,
-                        newOrUpdated: this.wasUpdated
+                        newOrUpdated: this.wasUpdated,
+                        wasDeleted: this.wasDeleted,
                     }
                 })
             },
             wasUpdated(menu){
                 this.$emit('menu-updated', menu);
+            },
+            wasDeleted(menuId){
+                this.$emit('menu-deleted', menuId);
             }
         }
     }

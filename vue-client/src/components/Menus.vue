@@ -6,7 +6,7 @@
                 <tr v-for="day in days" :key="day">
                     <td>{{getFormattedDay(day)}}</td>
                     <td class="menu-cell" v-for="menu in getMenusFor(day)" :key="menu.id">
-                        <Menu :menu=menu v-on:menu-updated="wasUpdated"/>
+                        <Menu :menu=menu v-on:menu-updated="wasUpdated" v-on:menu-deleted="wasDeleted"/>
                     </td>
                 </tr>
             </table>
@@ -54,9 +54,14 @@
                 return this.menus.filter(menu => menu.date === day);
             },
             wasUpdated(menu) {
-                let existingMenu = this.menus.find(f => f.id === menu.id);
+                let existingMenu = this.menus.find(m => m.id === menu.id);
                 const idx = this.menus.indexOf(existingMenu);
                 this.$set(this.menus, idx, menu);
+            },
+            wasDeleted(menuId) {
+                let existingMenu = this.menus.find(m => m.id === menuId);
+                const idx = this.menus.indexOf(existingMenu);
+                this.menus.splice(idx, 1);
             },
         }
     }

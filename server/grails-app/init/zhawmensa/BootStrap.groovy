@@ -1,10 +1,23 @@
 package zhawmensa
 
 import grails.util.Environment
+import zhawmensa.security.AppUser
+import zhawmensa.security.Role
+import zhawmensa.security.AppUserRole
 
 class BootStrap {
 
     def init = { servletContext ->
+
+        if (AppUser.findAll().size() == 0) {
+            Role adminRole = new Role(authority: 'ROLE_ADMIN').save()
+            AppUser adminUser = new AppUser(username: 'admin', password: 'admin').save()
+
+            AppUserRole.withTransaction {
+                AppUserRole.create(adminUser, adminRole)
+            }
+        }
+
         if (Environment.current != Environment.TEST) {
             createFacilitiesIfEmpty()
         }

@@ -6,10 +6,11 @@ import zhawmensa.exceptions.BusinessException
 
 class MenuImportZFVService implements MenuImport {
     private static final String SERVICE_URL = "https://zfv.ch/en/menus/rssMenuPlan"
-    private static def ALL_EXCEPT_DIGITS_AND_SLASH = /[^0-9.\/]/
-    private static def DAYS_PROVIDED = 1..6
-    private static List<String> EXPECTED_MENU_NODES = ['h3', 'p']
-    private static String MENU_NODE_HEADER = "h3"
+    private static final String PRICE_SEPARATOR = "/"
+    private static final List<String> EXPECTED_MENU_NODES = ['h3', 'p']
+    private static final String MENU_NODE_HEADER = "h3"
+    private static final def ALL_EXCEPT_DIGITS_AND_SLASH = /[^0-9.\/]/
+    private static final def DAYS_PROVIDED = 1..6
 
     XmlImportService xmlImportService
 
@@ -42,7 +43,11 @@ class MenuImportZFVService implements MenuImport {
             validateMenuNode(menuNode)
 
             if (menuNode.name().localPart == MENU_NODE_HEADER) {
-                menus.add(importMenu(menuNode, (Node) menusOfADay.value()[index + 1], menuDate))
+                if (menuNode.span.text().trim()) {
+                    menus.add(importMenu(menuNode, (Node) menusOfADay.value()[index + 1], menuDate))
+                } else {
+                    log.info("Ignoring menu without price and header '${menuNode.text().trim()}'! It's probably not a menu!")
+                }
             }
         }
 
@@ -59,7 +64,7 @@ class MenuImportZFVService implements MenuImport {
         String[] sideDishes = descriptionNode.text().trim().split("\n").tail()
         menu.sideDishes = getFormattedSideDishString(sideDishes)
 
-        String[] prices = headerNode.span.text().replaceAll(ALL_EXCEPT_DIGITS_AND_SLASH, '').split("/")
+        String[] prices = headerNode.span.text().replaceAll(ALL_EXCEPT_DIGITS_AND_SLASH, '').split(PRICE_SEPARATOR)
         menu.studentPrice = new BigDecimal(prices[0])
         menu.internalPrice = new BigDecimal(prices[1])
         menu.externalPrice = new BigDecimal(prices[2])
@@ -78,7 +83,7 @@ class MenuImportZFVService implements MenuImport {
     }
 
     private void validateMenuNode(Node menuNode) {
-        if(!EXPECTED_MENU_NODES.contains(menuNode.name().localPart)){
+        if (!EXPECTED_MENU_NODES.contains(menuNode.name().localPart)) {
             throw new BusinessException("Unexpected menu node in ZFV Import! Node: ${menuNode}")
         }
     }

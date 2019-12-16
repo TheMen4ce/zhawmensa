@@ -28,7 +28,20 @@ class MenuImportZFVServiceSpec extends Specification implements ServiceUnitTest<
         menus.last().externalPrice == new BigDecimal("13.80")
         menus.last().internalPrice == new BigDecimal("12.80")
         menus.last().studentPrice == new BigDecimal("10.80")
+        menus.last().label == "voll anders"
         menus.last().title == "PH Schnitzel mit"
         menus.last().sideDishes == "Zitronen-Schnitz\nKarotten-Erbsen Gemüse\nund Pommes Frites\nFleisch: Schweiz / Schwein"
+    }
+
+    void "should safely ignore news"() {
+        given:
+        Node node = new XmlParser().parse(new File("src/test/resources/ZFVXMLNewsResponse.xml"))
+        Mockito.when(mockImportService.importXmlFrom(Mockito.any())).thenReturn(node)
+
+        when:
+        List<Menu> menus = service.importMenus(facility)
+
+        then:
+        menus.size() == 0
     }
 }

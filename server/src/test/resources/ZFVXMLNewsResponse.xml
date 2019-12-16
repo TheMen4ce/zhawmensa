@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>tag:zfv.ch,2019-12-16:/feed/201912161558000000</id>
+    <title type="text">Mensa Pädagogische Hochschule Zürich - 21.12.2019 </title>
+    <subtitle type="html">Lagerstrasse 10, CH-8004 Zürich</subtitle>
+    <updated>2019-12-16CET00:00:00+01:00</updated>
+    <entry>
+        <title>Mensa Feed - Mensa Pädagogische Hochschule Zürich</title>
+        <updated>2019-12-16CET00:00:00+01:00</updated>
+        <published>2019-12-16CET11:15:58+01:00</published>
+        <summary type="xhtml">​
+
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h3>
+                    News
+                    <span class="price" style="font-weight: normal;">
+                    </span>
+                </h3>
+                <p>
+                    Sehr geehrte Gäste
+                    <br />
+                    <br />
+                    Auch wir gehen nun Ende der Woche in die Ferien.
+                    <br />
+                    Wir sind 2020 ab den 6. Januar wieder für Euch da.
+                    <br />
+                    <br />
+                    Euer Mensa-Team
+                    <br />
+                    <br />
+                </p>
+            </div>
+        </summary>
+    </entry>
+</feed>

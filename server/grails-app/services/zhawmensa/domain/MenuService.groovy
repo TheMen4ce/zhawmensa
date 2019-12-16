@@ -12,6 +12,7 @@ class MenuService {
             menuPlan {
                 eq('id', menuPlanId)
             }
+            order('date', 'asc')
             order('label', 'asc')
         } as List<Menu>
     }

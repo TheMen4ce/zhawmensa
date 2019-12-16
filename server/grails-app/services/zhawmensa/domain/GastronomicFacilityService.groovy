@@ -1,6 +1,7 @@
-package zhawmensa
+package zhawmensa.domain
 
 import grails.gorm.transactions.Transactional
+import zhawmensa.GastronomicFacility
 import zhawmensa.exceptions.ObjectNotFoundException
 
 @Transactional

@@ -3,6 +3,8 @@ package zhawmensa
 import grails.testing.services.ServiceUnitTest
 import org.mockito.Mockito
 import spock.lang.Specification
+import zhawmensa.menuimport.MenuImportZFVService
+import zhawmensa.menuimport.XmlImportService
 
 class MenuImportZFVServiceSpec extends Specification implements ServiceUnitTest<MenuImportZFVService>  {
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 666)

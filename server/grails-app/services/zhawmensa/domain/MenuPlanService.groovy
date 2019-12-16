@@ -1,6 +1,8 @@
-package zhawmensa
+package zhawmensa.domain
 
 import grails.gorm.transactions.Transactional
+import zhawmensa.GastronomicFacility
+import zhawmensa.MenuPlan
 
 @Transactional
 class MenuPlanService {

@@ -1,6 +1,11 @@
-package zhawmensa
+package zhawmensa.menuimport
 
 import grails.gorm.transactions.Transactional
+import zhawmensa.GastronomicFacility
+import zhawmensa.Menu
+import zhawmensa.MenuPlan
+import zhawmensa.domain.GastronomicFacilityService
+import zhawmensa.domain.MenuPlanService
 
 @Transactional
 class MenuImportService {

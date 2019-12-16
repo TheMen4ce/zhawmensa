@@ -4,6 +4,12 @@ import grails.testing.mixin.integration.Integration
 import grails.testing.services.ServiceUnitTest
 import org.mockito.Mockito
 import spock.lang.Specification
+import zhawmensa.domain.GastronomicFacilityService
+import zhawmensa.domain.MenuPlanService
+import zhawmensa.menuimport.ImportFacadeService
+import zhawmensa.menuimport.MenuImportSVService
+import zhawmensa.menuimport.MenuImportService
+import zhawmensa.menuimport.MenuImportZFVService
 
 @Integration
 class MenuImportServiceISpec extends Specification implements ServiceUnitTest<MenuImportService> {

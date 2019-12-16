@@ -1,4 +1,4 @@
-package zhawmensa
+package zhawmensa.menuimport
 
 import org.xml.sax.SAXParseException
 import zhawmensa.exceptions.BusinessException

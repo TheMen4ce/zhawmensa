@@ -1,4 +1,8 @@
-package zhawmensa
+package zhawmensa.menuimport
+
+import zhawmensa.GastronomicFacility
+import zhawmensa.Menu
+import zhawmensa.Provider
 
 class ImportFacadeService {
 

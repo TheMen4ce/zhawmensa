@@ -1,5 +1,6 @@
 package zhawmensa
 
+import zhawmensa.domain.GastronomicFacilityService
 import zhawmensa.exceptions.ObjectOutdatedException
 
 

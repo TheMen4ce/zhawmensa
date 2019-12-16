@@ -3,6 +3,7 @@ package zhawmensa
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 import zhawmensa.exceptions.BusinessException
+import zhawmensa.menuimport.XmlImportService
 
 class XmlImportServiceSpec extends Specification implements ServiceUnitTest<XmlImportService> {
 

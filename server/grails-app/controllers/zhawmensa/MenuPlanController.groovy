@@ -1,5 +1,7 @@
 package zhawmensa
 
+import zhawmensa.domain.MenuPlanService
+
 class MenuPlanController implements ExceptionHandlingController {
 	static responseFormats = ['json']
 

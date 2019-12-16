@@ -1,5 +1,6 @@
 package zhawmensa
 
+import zhawmensa.domain.MenuService
 import zhawmensa.exceptions.ObjectOutdatedException
 
 class MenuController implements ExceptionHandlingController {

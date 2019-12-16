@@ -4,6 +4,7 @@ import grails.testing.mixin.integration.Integration
 import grails.testing.services.ServiceUnitTest
 import grails.validation.ValidationException
 import spock.lang.Specification
+import zhawmensa.domain.GastronomicFacilityService
 import zhawmensa.exceptions.ObjectNotFoundException
 
 @Integration

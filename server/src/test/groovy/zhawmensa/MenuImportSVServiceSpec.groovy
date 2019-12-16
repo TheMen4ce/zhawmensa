@@ -3,6 +3,7 @@ package zhawmensa
 import grails.testing.services.ServiceUnitTest
 import org.mockito.Mockito
 import spock.lang.Specification
+import zhawmensa.exceptions.BusinessException
 
 class MenuImportSVServiceSpec extends Specification implements ServiceUnitTest<MenuImportSVService> {
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 1234)

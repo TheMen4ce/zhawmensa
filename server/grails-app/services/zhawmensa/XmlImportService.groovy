@@ -1,6 +1,7 @@
 package zhawmensa
 
 import org.xml.sax.SAXParseException
+import zhawmensa.exceptions.BusinessException
 
 class XmlImportService {
 

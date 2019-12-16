@@ -1,6 +1,7 @@
 package zhawmensa
 
 import grails.gorm.transactions.Transactional
+import zhawmensa.exceptions.ObjectNotFoundException
 
 @Transactional
 class GastronomicFacilityService {
@@ -10,20 +11,22 @@ class GastronomicFacilityService {
     }
 
     GastronomicFacility findById(long id) {
-        return GastronomicFacility.findById(id)
+        GastronomicFacility facility = GastronomicFacility.findById(id)
+        if (!facility) {
+            throw new ObjectNotFoundException("No facility found with id ${id}")
+        }
+        return facility
     }
 
     List<GastronomicFacility> findAll() {
         return GastronomicFacility.findAll()
     }
 
-    boolean deleteById(long id) {
+    void deleteById(long id) {
         GastronomicFacility facilityToDelete = GastronomicFacility.findById(id)
-        if (facilityToDelete) {
-            facilityToDelete.delete()
-            return true
-        } else {
-            return false
+        if (!facilityToDelete) {
+            throw new ObjectNotFoundException("No facility found with id ${id}")
         }
+        facilityToDelete.delete()
     }
 }

@@ -1,6 +1,7 @@
 package zhawmensa
 
 import grails.gorm.transactions.Transactional
+import zhawmensa.exceptions.ObjectNotFoundException
 
 @Transactional
 class MenuService {
@@ -18,13 +19,19 @@ class MenuService {
         return menu.save()
     }
 
-    boolean deleteById(long id) {
-        Menu menuToDelete = Menu.findById(id)
-        if (menuToDelete) {
-            menuToDelete.delete()
-            return true
-        } else {
-            return false
+    Menu findById(long id) {
+        Menu menu = Menu.findById(id)
+        if (!menu) {
+            throw new ObjectNotFoundException("No menu found with id ${id}")
         }
+        return menu
+    }
+
+    void deleteById(long id) {
+        Menu menuToDelete = Menu.findById(id)
+        if (!menuToDelete) {
+            throw new ObjectNotFoundException("No menu found with id ${id}")
+        }
+        menuToDelete.delete()
     }
 }

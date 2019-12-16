@@ -1,5 +1,7 @@
 package zhawmensa
 
+import zhawmensa.exceptions.BusinessException
+
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 

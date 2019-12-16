@@ -1,5 +1,7 @@
 package zhawmensa
 
+import zhawmensa.exceptions.ObjectOutdatedException
+
 
 class GastronomicFacilityController implements ExceptionHandlingController {
 
@@ -15,15 +17,19 @@ class GastronomicFacilityController implements ExceptionHandlingController {
         respond gastronomicFacilityService.store(facility)
     }
 
-    def update(GastronomicFacility facility) {
+    def update() {
+        GastronomicFacility facility = gastronomicFacilityService.findById(params.id as long)
+        long clientVersion = request.JSON.version
+        bindData(facility, request.JSON)
+        if (facility.version > clientVersion) {
+            throw new ObjectOutdatedException("facility")
+        }
+
         respond gastronomicFacilityService.store(facility)
     }
 
     def delete() {
-        if (gastronomicFacilityService.deleteById(params.id as long)) {
-            render status: 200
-        } else {
-            render status: 404
-        }
+        gastronomicFacilityService.deleteById(params.id as long)
+        render status: 204
     }
 }

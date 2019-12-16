@@ -1,7 +1,9 @@
 package zhawmensa
 
+import zhawmensa.exceptions.ObjectOutdatedException
+
 class MenuController implements ExceptionHandlingController {
-	static responseFormats = ['json']
+    static responseFormats = ['json']
 
     MenuService menuService
 
@@ -14,16 +16,19 @@ class MenuController implements ExceptionHandlingController {
         respond createdMenu
     }
 
-    def update(Menu menu) {
-        Menu updatedMenu = menuService.store(menu)
-        respond updatedMenu
+    def update() {
+        Menu updatedMenu = menuService.findById(params.id as long)
+        long clientVersion = request.JSON.version
+        bindData(updatedMenu, request.JSON)
+        if (updatedMenu.version > clientVersion) {
+            throw new ObjectOutdatedException("menu")
+        }
+
+        respond menuService.store(updatedMenu)
     }
 
     def delete() {
-        if (menuService.deleteById(params.id as long)) {
-            render status: 200
-        } else {
-            render status: 404
-        }
+        menuService.deleteById(params.id as long)
+        render status: 204
     }
 }

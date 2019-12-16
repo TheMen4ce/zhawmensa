@@ -1,7 +1,7 @@
-package zhawmensa
+package zhawmensa.exceptions
 
 /**
- * Throw for exceptions due to expected errors in business logic
+ * Thrown for exceptions due to expected errors in business logic
  */
 class BusinessException extends RuntimeException {
 

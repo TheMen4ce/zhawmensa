@@ -4,6 +4,7 @@ import grails.testing.mixin.integration.Integration
 import grails.testing.services.ServiceUnitTest
 import grails.validation.ValidationException
 import spock.lang.Specification
+import zhawmensa.exceptions.ObjectNotFoundException
 
 @Integration
 class GastronomicFacilityServiceISpec extends Specification implements ServiceUnitTest<GastronomicFacilityService>{
@@ -31,8 +32,11 @@ class GastronomicFacilityServiceISpec extends Specification implements ServiceUn
     }
 
     void "should not delete inexistent facility"() {
-        expect:
-        !service.deleteById(999)
+        when:
+        service.deleteById(999)
+
+        then:
+        thrown(ObjectNotFoundException.class)
     }
 
     void "should store gastronomic facility"() {

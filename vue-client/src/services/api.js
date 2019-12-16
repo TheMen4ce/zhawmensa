@@ -9,7 +9,13 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use((response) => response, (error) => {
-    toaster.error(error.response?.data ? error.response.data : error);
+    if (error.response?.data?.error) {
+        toaster.error(error.response.data.error);
+    } else if (error.response?.data) {
+        toaster.error(error.response.data);
+    } else {
+        toaster.error(error);
+    }
     throw error;
 });
 

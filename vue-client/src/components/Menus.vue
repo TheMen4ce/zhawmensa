@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="title">Menus</h1>
+        <h2 class="title">Menus</h2>
         <div class="table-container">
             <table class="table">
                 <tr v-for="day in days" :key="day">

@@ -28,8 +28,11 @@ class GastronomicFacilityServiceISpec extends Specification implements ServiceUn
         when:
         service.deleteById(facility.id)
 
+        and:
+        service.findById(facility.id)
+
         then:
-        !service.findById(facility.id)
+        thrown(ObjectNotFoundException.class)
     }
 
     void "should not delete inexistent facility"() {

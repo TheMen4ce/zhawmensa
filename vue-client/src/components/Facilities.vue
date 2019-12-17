@@ -5,12 +5,9 @@
             New Facility
         </button>
         <MenuImport/>
+        <br><br>
         <b-table :data="facilities" striped default-sort="name">
             <template slot-scope="props">
-                <b-table-column field="id" label="ID" width="40" numeric sortable>
-                    {{ props.row.id }}
-                </b-table-column>
-
                 <b-table-column field="name" label="Name" sortable>
                     {{ props.row.name }}
                 </b-table-column>
@@ -24,7 +21,7 @@
                 </b-table-column>
 
                 <b-table-column>
-                    <router-link :to="`/menuplan/${props.row.id}`">Menuplan</router-link>
+                    <b-button tag="router-link" :to="`/menuplan/${props.row.id}`" type="">Menuplan</b-button>
                     <b-button icon-right="pencil" @click="editFacility(props.row)"/>
                     <b-button type="is-danger" @click="deleteFacility(props.row)" icon-right="delete"/>
                 </b-table-column>
@@ -113,7 +110,7 @@
 </script>
 
 <style scoped>
-    button {
-        margin-right: 1rem;
+    .button {
+        margin-right: .5rem;
     }
 </style>

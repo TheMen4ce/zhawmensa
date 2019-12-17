@@ -17,10 +17,6 @@
             <template slot="end">
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <b-button v-if="!currentUser"
-                                  tag="router-link" to="/login" type="is-link is-primary">
-                            Login
-                        </b-button>
                         <b-button v-if="currentUser" @click="logOut"
                                   to="/login" type="is-info">
                             Logout

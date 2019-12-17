@@ -66,6 +66,10 @@ dependencies {
     testCompile "org.grails:grails-web-testing-support"
 }
 
+springBoot {
+    mainClassName = 'zhawmensa.Application'
+}
+
 bootRun {
     jvmArgs(
         '-Dspring.output.ansi.enabled=always', 

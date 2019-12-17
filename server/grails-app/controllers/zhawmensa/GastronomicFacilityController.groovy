@@ -1,9 +1,10 @@
 package zhawmensa
 
+import grails.plugin.springsecurity.annotation.Secured
 import zhawmensa.domain.GastronomicFacilityService
 import zhawmensa.exceptions.ObjectOutdatedException
 
-
+@Secured("ROLE_ADMIN")
 class GastronomicFacilityController implements ExceptionHandlingController {
 
     GastronomicFacilityService gastronomicFacilityService

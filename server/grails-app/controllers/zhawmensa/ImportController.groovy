@@ -1,7 +1,9 @@
 package zhawmensa
 
+import grails.plugin.springsecurity.annotation.Secured
 import zhawmensa.menuimport.MenuImportService
 
+@Secured("ROLE_ADMIN")
 class ImportController implements ExceptionHandlingController {
 	static responseFormats = ['text']
 

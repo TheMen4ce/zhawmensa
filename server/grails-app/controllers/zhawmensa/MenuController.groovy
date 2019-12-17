@@ -1,8 +1,10 @@
 package zhawmensa
 
+import grails.plugin.springsecurity.annotation.Secured
 import zhawmensa.domain.MenuService
 import zhawmensa.exceptions.ObjectOutdatedException
 
+@Secured("ROLE_ADMIN")
 class MenuController implements ExceptionHandlingController {
     static responseFormats = ['json']
 

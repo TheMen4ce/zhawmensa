@@ -7,7 +7,6 @@ class AuthService {
                 username: user.username,
                 password: user.password
             })
-            .then(this.handleResponse)
             .then(response => {
                 if (response.data.access_token) {
                     localStorage.setItem('user', JSON.stringify(response.data));
@@ -31,16 +30,6 @@ class AuthService {
         });
     }
 
-    handleResponse(response) {
-        if (response.status === 401) {
-            this.logout();
-
-            const error = response.data && response.data.message;
-            return Promise.reject(error);
-        }
-
-        return Promise.resolve(response);
-    }
 }
 
 export default new AuthService();

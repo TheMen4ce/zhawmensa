@@ -21,15 +21,9 @@ class AuthService {
         location.reload(true);
     }
 
-    register(user) {
-        // TODO
-        return api.post('signup', {
-            username: user.username,
-            email: user.email,
-            password: user.password
-        });
+    changeUsername(oldUsername, newUsername) {
+        return api.post('user/changeUsername', {oldUsername: oldUsername, newUsername: newUsername});
     }
-
 }
 
 export default new AuthService();

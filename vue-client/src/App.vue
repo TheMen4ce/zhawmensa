@@ -8,7 +8,7 @@
                 </b-navbar-item>
             </template>
             <template slot="start">
-                <b-navbar-item v-if="currentUser">
+                <b-navbar-item v-if="currentUser" tag="router-link" to="/profile">
                     <b-icon icon="account-circle" size="is-medium"/>
                     {{currentUser.username}}
                 </b-navbar-item>

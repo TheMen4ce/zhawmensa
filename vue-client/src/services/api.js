@@ -21,6 +21,7 @@ instance.interceptors.response.use((response) => response, (error) => {
     if (error.response?.status === 401) {
         // in case the user never logged out and there is still a user in local storage
         localStorage.removeItem('user');
+        location.reload(true);
     }
     throw error
 });

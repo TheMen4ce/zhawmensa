@@ -3,9 +3,14 @@ package zhawmensa.menuimport
 import org.xml.sax.SAXParseException
 import zhawmensa.exceptions.BusinessException
 
-class XmlImportService {
+class XmlParsingService {
 
-    Node importXmlFrom(String uri) {
+    /**
+     * Parses an XML from a given source
+     * @param uri of the given source
+     * @return a groovy Node of the complete XML that can easily be parsed
+     */
+    Node parseXmlFrom(String uri) {
         try {
             return new XmlParser().parse(uri)
         } catch (IOException ex) {

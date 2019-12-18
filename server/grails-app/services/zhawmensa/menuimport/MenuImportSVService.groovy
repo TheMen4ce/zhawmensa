@@ -7,18 +7,21 @@ import zhawmensa.exceptions.BusinessException
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 
+/**
+ * Menu import for all facilities provided by the SV Group
+ */
 class MenuImportSVService implements MenuImport {
     private static final String SERVICE_URL = "http://micro.sv-group.com/typo3conf/ext/netv_svg_menu/menu_xmlexp/menuexport.xml.php"
-    private static final String AUTH = "ahle_zhaw.ch@P1DQJgSGQWwdOYiUOA7nGDDnl80cGWEu7eRXUJbl1cSQoOyaZGbKh9H2acsTqLvF"
+    private static final String AUTH_STRING = "ahle_zhaw.ch@P1DQJgSGQWwdOYiUOA7nGDDnl80cGWEu7eRXUJbl1cSQoOyaZGbKh9H2acsTqLvF"
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy")
 
-    XmlImportService xmlImportService
+    XmlParsingService xmlParsingService
 
     @Override
     List<Menu> importMenus(GastronomicFacility facility) {
         List<Menu> menus = []
 
-        Node rootNode = xmlImportService.importXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH)
+        Node rootNode = xmlParsingService.parseXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH_STRING)
         throwIfError(rootNode, facility)
 
         Map<String, String> labelMap = readObjectsIntoIdMap((List<Node>) rootNode.settings.offers.offer)

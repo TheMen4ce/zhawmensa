@@ -4,6 +4,9 @@ import zhawmensa.GastronomicFacility
 import zhawmensa.Menu
 import zhawmensa.exceptions.BusinessException
 
+/**
+ * Menu import for all facilities provided by ZFV
+ */
 class MenuImportZFVService implements MenuImport {
     private static final String SERVICE_URL = "https://zfv.ch/en/menus/rssMenuPlan"
     private static final String PRICE_SEPARATOR = "/"
@@ -12,7 +15,7 @@ class MenuImportZFVService implements MenuImport {
     private static final def ALL_EXCEPT_DIGITS_AND_SLASH = /[^0-9.\/]/
     private static final def DAYS_PROVIDED = 1..6
 
-    XmlImportService xmlImportService
+    XmlParsingService xmlParsingService
 
     List<Menu> importMenus(GastronomicFacility facility) {
         List<Menu> menus = []
@@ -30,7 +33,7 @@ class MenuImportZFVService implements MenuImport {
             today.set(Calendar.MILLISECOND, 0)
             Date menuDate = today.getTime()
 
-            Node rootNode = xmlImportService.importXmlFrom(SERVICE_URL + "?menuId=${facility.locationId}&dayOfWeek=${day}")
+            Node rootNode = xmlParsingService.parseXmlFrom(SERVICE_URL + "?menuId=${facility.locationId}&dayOfWeek=${day}")
             menus.addAll(importMenusOfDay((Node) rootNode.entry.summary.div[0], menuDate))
         }
 

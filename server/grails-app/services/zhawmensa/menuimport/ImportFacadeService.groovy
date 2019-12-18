@@ -4,6 +4,9 @@ import zhawmensa.GastronomicFacility
 import zhawmensa.Menu
 import zhawmensa.Provider
 
+/**
+ * Provides a common interface for all facilities to import the menus
+ */
 class ImportFacadeService {
 
     MenuImportSVService menuImportSVService

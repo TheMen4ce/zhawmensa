@@ -7,6 +7,9 @@ import zhawmensa.MenuPlan
 import zhawmensa.domain.GastronomicFacilityService
 import zhawmensa.domain.MenuPlanService
 
+/**
+ * Imports menu plans for all facilities for the current week
+ */
 @Transactional
 class MenuImportService {
 

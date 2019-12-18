@@ -4,21 +4,21 @@ import grails.testing.services.ServiceUnitTest
 import org.mockito.Mockito
 import spock.lang.Specification
 import zhawmensa.menuimport.MenuImportZFVService
-import zhawmensa.menuimport.XmlImportService
+import zhawmensa.menuimport.XmlParsingService
 
 class MenuImportZFVServiceSpec extends Specification implements ServiceUnitTest<MenuImportZFVService>  {
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 666)
 
-    XmlImportService mockImportService = Mockito.mock(XmlImportService.class)
+    XmlParsingService mockImportService = Mockito.mock(XmlParsingService.class)
 
     void setup() {
-        service.xmlImportService = mockImportService
+        service.xmlParsingService = mockImportService
     }
 
     void "should parse all menus from static ZFV service response"() {
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/ZFVXMLResponse.xml"))
-        Mockito.when(mockImportService.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(mockImportService.parseXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
         List<Menu> menus = service.importMenus(facility)
@@ -36,7 +36,7 @@ class MenuImportZFVServiceSpec extends Specification implements ServiceUnitTest<
     void "should safely ignore news"() {
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/ZFVXMLNewsResponse.xml"))
-        Mockito.when(mockImportService.importXmlFrom(Mockito.any())).thenReturn(node)
+        Mockito.when(mockImportService.parseXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
         List<Menu> menus = service.importMenus(facility)

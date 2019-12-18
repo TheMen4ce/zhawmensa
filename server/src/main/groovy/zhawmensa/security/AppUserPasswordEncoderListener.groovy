@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import grails.events.annotation.gorm.Listener
 import groovy.transform.CompileStatic
 
+/**
+ * Automatically encodes the password when set using SpringSecurity's PasswordEncoder
+ */
 @CompileStatic
 class AppUserPasswordEncoderListener {
 

@@ -1,14 +1,15 @@
 <template>
     <section>
         <form name="form" @submit.prevent="handleLogin">
-            <b-field label="Username" :type="message ? 'is-danger' : ''" :message="message">
-                <b-input v-model="user.username" maxlength="30"/>
+            <b-field label="Username" :type="{'is-danger' : message}" :message="message">
+                <b-input v-model="user.username" maxlength="30" required/>
             </b-field>
 
             <b-field label="Password">
                 <b-input type="password"
                          v-model="user.password"
-                         password-reveal/>
+                         password-reveal
+                         required/>
             </b-field>
             <button class="button is-primary" type="submit">Login</button>
         </form>

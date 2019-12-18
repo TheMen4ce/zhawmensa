@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <b-navbar :mobile-burger="currentUser">
+        <b-navbar :mobile-burger="!!currentUser">
             <template slot="brand">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
                     <img alt="ZHAW School of Engineering Logo" src="./assets/ZHAW_Logo.svg">

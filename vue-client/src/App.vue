@@ -1,24 +1,23 @@
 <template>
     <div id="app">
-        <b-navbar>
+        <b-navbar :mobile-burger="currentUser">
             <template slot="brand">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
                     <img alt="ZHAW School of Engineering Logo" src="./assets/ZHAW_Logo.svg">
                     <h1 class="title">Mensa Master</h1>
                 </b-navbar-item>
             </template>
-            <template slot="start">
-                <b-navbar-item v-if="currentUser" tag="router-link" to="/profile">
+            <template slot="start" v-if="currentUser">
+                <b-navbar-item tag="router-link" to="/profile">
                     <b-icon icon="account-circle" size="is-medium"/>
                     {{currentUser.username}}
                 </b-navbar-item>
             </template>
 
-            <template slot="end">
+            <template slot="end" v-if="currentUser">
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <b-button v-if="currentUser" @click="logOut"
-                                  to="/login" type="is-info">
+                        <b-button @click="logOut" to="/login" type="is-primary">
                             Logout
                         </b-button>
                     </div>

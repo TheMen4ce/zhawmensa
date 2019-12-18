@@ -15,6 +15,7 @@ class UrlMappings {
         get "/menus/$id"(controller: 'menu', action:'findAllByMenuPlanId')
 
         post "/user/changeUsername"(controller: 'user', action:'changeUsername')
+        post "/user/changePassword"(controller: 'user', action:'changePassword')
 
         "/"(controller: 'application', action:'index')
         "500"(view: '/error')

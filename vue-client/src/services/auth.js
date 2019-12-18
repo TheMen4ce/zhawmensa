@@ -22,7 +22,11 @@ class AuthService {
     }
 
     changeUsername(oldUsername, newUsername) {
-        return api.post('user/changeUsername', {oldUsername: oldUsername, newUsername: newUsername});
+        return api.post('user/changeUsername', {oldUsername, newUsername});
+    }
+
+    changePassword(username, password, newPassword) {
+        return api.post('user/changePassword', {username, password, newPassword});
     }
 }
 

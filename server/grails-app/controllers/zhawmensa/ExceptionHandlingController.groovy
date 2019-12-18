@@ -9,6 +9,8 @@ import zhawmensa.exceptions.ObjectOutdatedException
  */
 trait ExceptionHandlingController {
 
+    I18nService i18nService
+
     def handleBusinessException(BusinessException ex) {
         log.info("Nothing serious. Got a business exception ${ex.message}")
 
@@ -27,7 +29,7 @@ trait ExceptionHandlingController {
         log.error("App crashed! ${ex.message}")
         ex.printStackTrace()
 
-        render(status: 500, text: "Oops! Something went seriously wrong!")
+        render(status: 500, text: i18nService.getMessage("global.error.fatal"))
     }
 
 }

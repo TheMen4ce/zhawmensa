@@ -10,8 +10,6 @@ class UrlMappings {
         put "/$controller/$id(.$format)?"(action:"update")
         patch "/$controller/$id(.$format)?"(action:"patch")
 
-        get "/menuplan/$id"(controller: 'menuPlan', action:'findAllByFacilityId')
-
         get "/menus/$id"(controller: 'menu', action:'findAllByMenuPlanId')
 
         post "/user/changeUsername"(controller: 'user', action:'changeUsername')

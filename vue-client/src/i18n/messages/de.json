@@ -9,7 +9,7 @@
     "logout": "Abmelden",
     "facilities": "Einrichtungen",
     "profile": "Benutzer Profil",
-    "menuPlan": "Menü Plan"
+    "menuPlan": "Menüplan"
   },
   "login": {
     "username": "Benutzername",
@@ -33,5 +33,9 @@
     "internalPrice": "Preis Intern",
     "externalPrice": "Preis Extern",
     "studentPrice": "Preis Studenten"
+  },
+  "menuPlan": {
+    "deleted": "Ein Menüplan weniger!",
+    "noMenuPlan": "Kein Menüplan"
   }
 }

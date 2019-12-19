@@ -9,7 +9,12 @@ class MenuPlanController implements ExceptionHandlingController {
 
     MenuPlanService menuPlanService
 
-    def findAllByFacilityId() {
+    def show() {
         respond menuPlanService.findAllByFacilityId(params.id as long)
+    }
+
+    def delete() {
+        menuPlanService.deleteById(params.id as long)
+        render status: 204
     }
 }

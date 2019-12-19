@@ -33,5 +33,9 @@
     "internalPrice": "Internal Price",
     "externalPrice": "External Price",
     "studentPrice": "Student Price"
+  },
+  "menuPlan": {
+    "deleted": "Minus one menu plan!",
+    "noMenuPlan": "No menu plans"
   }
 }

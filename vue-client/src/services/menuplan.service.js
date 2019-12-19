@@ -1,5 +1,6 @@
 import api from './api'
 
 export default {
-    getAll: facilityId => api.get(`menuplan/${facilityId}`)
+    getAll: menuPlanId => api.get(`menuPlan/${menuPlanId}`),
+    delete: menuPlanId => api.delete(`menuPlan/${menuPlanId}`)
 }

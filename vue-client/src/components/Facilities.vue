@@ -7,7 +7,7 @@
         </button>
         <MenuImport/>
         <br><br>
-        <b-table :data="facilities" striped default-sort="name">
+        <b-table :data="facilities" striped default-sort="name" :loading="isLoading">
             <template slot-scope="props">
                 <b-table-column field="name" :label="$t('facilities.name')" sortable>
                     {{ props.row.name }}
@@ -28,7 +28,7 @@
                 </b-table-column>
             </template>
 
-            <template slot="empty">
+            <template slot="empty" v-if="!isLoading">
                 <section class="section">
                     <div class="content has-text-grey has-text-centered">
                         <p>
@@ -52,7 +52,8 @@
         components: {MenuImport},
         data() {
             return {
-                facilities: []
+                facilities: [],
+                isLoading: false
             }
         },
         mounted() {
@@ -60,8 +61,10 @@
         },
         methods: {
             fetchFacilities() {
+                this.isLoading = true;
                 service.getAll().then(res => {
                     this.facilities = res.data;
+                    this.isLoading = false;
                 })
             },
 

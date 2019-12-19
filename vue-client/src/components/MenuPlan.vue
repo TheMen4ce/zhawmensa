@@ -1,7 +1,9 @@
 <template>
     <div>
         <h2 class="title is-4">{{$t('nav.menuPlan')}}</h2>
-        <b-select class="menu-plan-select" v-model="selectedMenuPlan" :placeholder="$t('menuPlan.noMenuPlan')" required>
+        <b-loading :is-full-page="false" :active.sync="isLoading"/>
+        <b-select class="menu-plan-select" v-model="selectedMenuPlan" :placeholder="$t('menuPlan.noMenuPlan')"
+                  required>
             <option
                     v-for="option in menuPlans"
                     :key="option.id"
@@ -27,6 +29,7 @@
         },
         data() {
             return {
+                isLoading: false,
                 menuPlans: [],
                 selectedMenuPlan: undefined
             }
@@ -36,9 +39,11 @@
         },
         methods: {
             fetchMenuPlan() {
+                this.isLoading = true;
                 service.getAll(this.$route.params.facilityId).then(res => {
                     this.menuPlans = res.data;
                     this.selectedMenuPlan = this.menuPlans[0];
+                    this.isLoading = false;
                 })
             },
             deletePlan() {

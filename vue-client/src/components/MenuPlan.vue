@@ -17,7 +17,6 @@
     import Menus from "./Menus";
 
     export default {
-        name: "MenuPlan",
         components: {
             Menus
         },

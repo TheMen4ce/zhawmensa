@@ -20,7 +20,6 @@
     import User from '../models/user';
 
     export default {
-        name: 'login',
         computed: {
             loggedIn() {
                 return this.$store.state.auth.status.loggedIn;

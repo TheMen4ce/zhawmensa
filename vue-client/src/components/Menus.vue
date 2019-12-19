@@ -20,7 +20,6 @@
     import dayjs from "dayjs"
 
     export default {
-        name: "Menus",
         props: ['menuPlanId'],
         components: {
             Menu

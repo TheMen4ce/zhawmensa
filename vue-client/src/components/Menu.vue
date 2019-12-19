@@ -22,7 +22,6 @@
     import MenuModal from "./MenuModal";
 
     export default {
-        name: "Menu",
         props: ['menu'],
         methods: {
             editMenu(menu) {

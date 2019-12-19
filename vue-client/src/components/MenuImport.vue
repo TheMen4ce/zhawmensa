@@ -11,7 +11,6 @@
     import toaster from "../services/toaster.service";
 
     export default {
-        name: "MenuImport",
         data() {
             return {
                 isImporting: false

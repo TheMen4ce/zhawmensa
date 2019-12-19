@@ -33,7 +33,6 @@
     import service from '../services/facilities.service'
 
     export default {
-        name: "FacilityModal",
         props: {
             isNewEntry: Boolean,
             currentFacility: Object,

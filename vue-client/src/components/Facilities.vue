@@ -48,7 +48,6 @@
     import MenuImport from "./MenuImport";
 
     export default {
-        name: "Facilities",
         components: {MenuImport},
         data() {
             return {

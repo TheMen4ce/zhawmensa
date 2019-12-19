@@ -47,7 +47,6 @@
     import toaster from "../services/toaster.service";
 
     export default {
-        name: 'profile',
         data() {
             return {
                 username: '',

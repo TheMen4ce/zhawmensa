@@ -39,7 +39,6 @@
     import toaster from '../services/toaster.service'
 
     export default {
-        name: "MenuModal",
         props: {
             isNewEntry: Boolean,
             currentMenu: Object,

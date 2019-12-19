@@ -1,0 +1,30 @@
+{
+  "global": {
+    "close": "Schliessen",
+    "create": "Erstellen",
+    "update": "Aktualisieren",
+    "delete": "Löschen"
+  },
+  "login": {
+    "username": "Benutzername",
+    "password": "Passwort"
+  },
+  "facilities": {
+    "new": "Neue Einrichtung",
+    "noFound": "Keine Einrichtungen gefunden.",
+    "deleted": "Eine Einrichtung weniger!",
+    "provider": "Betreiber",
+    "chooseProvider": "Betreiber wählen",
+    "locationId": "Menüplan ID",
+    "number": "eine Zahl",
+    "name": "Name"
+  },
+  "menu": {
+    "title": "Titel",
+    "label": "Label",
+    "sideDishes": "Beilagen",
+    "internalPrice": "Preis Intern",
+    "externalPrice": "Preis Extern",
+    "studentPrice": "Preis Studenten"
+  }
+}

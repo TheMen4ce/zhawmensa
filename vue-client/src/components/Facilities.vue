@@ -2,21 +2,21 @@
     <div>
         <button class="button is-primary is-medium"
                 @click="newFacility()">
-            New Facility
+            {{$t('facilities.new')}}
         </button>
         <MenuImport/>
         <br><br>
         <b-table :data="facilities" striped default-sort="name">
             <template slot-scope="props">
-                <b-table-column field="name" label="Name" sortable>
+                <b-table-column field="name" :label="$t('facilities.name')" sortable>
                     {{ props.row.name }}
                 </b-table-column>
 
-                <b-table-column field="locationId" label="Location ID" sortable>
+                <b-table-column field="locationId" :label="$t('facilities.locationId')" sortable>
                     {{ props.row.locationId }}
                 </b-table-column>
 
-                <b-table-column field="provider" label="Provider" sortable>
+                <b-table-column field="provider" :label="$t('facilities.provider')" sortable>
                     {{ props.row.provider }}
                 </b-table-column>
 
@@ -33,7 +33,7 @@
                         <p>
                             <b-icon icon="emoticon-sad" size="is-large"/>
                         </p>
-                        <p>No facilities found.</p>
+                        <p>{{$t('facilities.noFound')}}</p>
                     </div>
                 </section>
             </template>
@@ -68,7 +68,7 @@
             deleteFacility(facility) {
                 service.delete(facility.id)
                     .then(() => {
-                        toaster.success("Minus one facility!");
+                        toaster.success(this.$t('facilities.deleted'));
                         let deletedFacility = this.facilities.find(f => f.id === facility.id);
                         const idx = this.facilities.indexOf(deletedFacility);
                         this.facilities.splice(idx, 1);

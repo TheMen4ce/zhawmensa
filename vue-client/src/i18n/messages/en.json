@@ -1,0 +1,30 @@
+{
+  "global": {
+    "close": "Close",
+    "create": "Create",
+    "update": "Update",
+    "delete": "Delete"
+  },
+  "login": {
+    "username": "Username",
+    "password": "Password"
+  },
+  "facilities": {
+    "new": "New Facility",
+    "noFound": "No facilities found.",
+    "deleted": "Minus one facility!",
+    "provider": "Provider",
+    "chooseProvider": "Select a provider",
+    "locationId": "Location ID",
+    "number": "a number",
+    "name": "Name"
+  },
+  "menu": {
+    "title": "Title",
+    "label": "Label",
+    "sideDishes": "Side Dishes",
+    "internalPrice": "Internal Price",
+    "externalPrice": "External Price",
+    "studentPrice": "Student Price"
+  }
+}

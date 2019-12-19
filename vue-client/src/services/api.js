@@ -1,5 +1,6 @@
 import axios from 'axios'
 import toaster from '../services/toaster.service'
+import translationService from '../services/translation.service'
 
 const SERVER_URL = 'http://localhost:8080';
 
@@ -8,8 +9,9 @@ const instance = axios.create({
     timeout: 10000
 });
 
-// general error handling
-instance.interceptors.response.use((response) => response, (error) => {
+// response interceptor
+instance.interceptors.response.use(response => response, error => {
+    // general error handling
     if (error.response?.data?.error) {
         toaster.error(error.response.data.error);
     } else if (error.response?.data) {
@@ -26,13 +28,14 @@ instance.interceptors.response.use((response) => response, (error) => {
     throw error
 });
 
-// provide auth header if existing
 instance.interceptors.request.use(function (config) {
-    let user = JSON.parse(localStorage.getItem('user'));
-
+    // provide auth header if existing
+    const user = JSON.parse(localStorage.getItem('user'));
     if (user?.access_token) {
         config.headers.Authorization = 'Bearer ' + user.access_token;
     }
+
+    config.headers['Accept-Language'] = translationService.currentLanguage;
 
     return config;
 });

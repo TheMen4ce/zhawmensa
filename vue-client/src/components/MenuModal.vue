@@ -5,30 +5,30 @@
                 <p class="modal-card-title">{{menu.title}}</p>
             </header>
             <section class="modal-card-body">
-                <b-field label="Title">
+                <b-field :label="$t('menu.title')">
                     <b-input type="text" v-model="menu.title" placeholder="Title" required/>
                 </b-field>
-                <b-field label="Label">
+                <b-field :label="$t('menu.label')">
                     <b-input type="text" v-model="menu.label" placeholder="Label" required/>
                 </b-field>
-                <b-field label="Side Dishes">
+                <b-field :label="$t('menu.sideDishes')">
                     <b-input type="textarea" maxlength="500" v-model="menu.sideDishes" placeholder="Sidedishes"
                              required/>
                 </b-field>
-                <b-field label="Student Price">
+                <b-field :label="$t('menu.studentPrice')">
                     <b-input icon="cash-100" type="number" v-model="menu.studentPrice" min="1" step=".05" required/>
                 </b-field>
-                <b-field label="Internal Price">
+                <b-field :label="$t('menu.internalPrice')">
                     <b-input icon="cash-100" type="number" v-model="menu.internalPrice" min="1" step=".05" required/>
                 </b-field>
-                <b-field label="External Price">
+                <b-field :label="$t('menu.externalPrice')">
                     <b-input icon="cash-100" type="number" v-model="menu.externalPrice" min="1" step=".05" required/>
                 </b-field>
             </section>
             <footer class="modal-card-foot">
-                <button class="button" type="button" @click="$parent.close()">Close</button>
-                <button class="button is-primary" type="submit" >{{isNewEntry ? 'Create' : 'Update'}}</button>
-                <button class="button is-danger float-right" type="button" @click="deleteMenu(menu.id)">Delete</button>
+                <button class="button" type="button" @click="$parent.close()">{{$t('global.close')}}</button>
+                <button class="button is-primary" type="submit" >{{isNewEntry ? $t('global.create') : $t('global.update')}}</button>
+                <button class="button is-danger float-right" type="button" @click="deleteMenu(menu.id)">{{$t('global.delete')}}</button>
             </footer>
         </div>
     </form>

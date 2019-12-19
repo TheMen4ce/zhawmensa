@@ -1,11 +1,11 @@
 <template>
     <section>
         <form name="form" @submit.prevent="handleLogin">
-            <b-field label="Username" :type="{'is-danger' : message}" :message="message">
+            <b-field :label="$t('login.username')" :type="{'is-danger' : message}" :message="message">
                 <b-input v-model="user.username" maxlength="30" required/>
             </b-field>
 
-            <b-field label="Password">
+            <b-field :label="$t('login.password')">
                 <b-input type="password"
                          v-model="user.password"
                          password-reveal

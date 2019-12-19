@@ -1,16 +1,13 @@
 <template>
-    <div>
-        <h2 class="title">Menus</h2>
-        <div class="table-container">
-            <table class="table">
-                <tr v-for="day in days" :key="day">
-                    <td>{{getFormattedDay(day)}}</td>
-                    <td class="menu-cell" v-for="menu in getMenusFor(day)" :key="menu.id">
-                        <Menu :menu=menu v-on:menu-updated="wasUpdated" v-on:menu-deleted="wasDeleted"/>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="table-container">
+        <table class="table">
+            <tr v-for="day in days" :key="day">
+                <td>{{getFormattedDay(day)}}</td>
+                <td class="menu-cell" v-for="menu in getMenusFor(day)" :key="menu.id">
+                    <Menu :menu=menu v-on:menu-updated="wasUpdated" v-on:menu-deleted="wasDeleted"/>
+                </td>
+            </tr>
+        </table>
     </div>
 </template>
 

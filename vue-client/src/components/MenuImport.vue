@@ -1,5 +1,5 @@
 <template>
-    <b-button class="button is-primary is-medium"
+    <b-button class="button is-primary"
             :loading=isImporting
             @click="importMenuplans()">
         Import

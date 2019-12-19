@@ -1,6 +1,7 @@
 <template>
     <div>
-        <button class="button is-primary is-medium"
+        <h2 class="title">{{$t('nav.facilities')}}</h2>
+        <button class="button is-primary"
                 @click="newFacility()">
             {{$t('facilities.new')}}
         </button>
@@ -21,7 +22,7 @@
                 </b-table-column>
 
                 <b-table-column>
-                    <b-button tag="router-link" :to="`/menuplan/${props.row.id}`" type="">Menuplan</b-button>
+                    <b-button tag="router-link" :to="`/menuplan/${props.row.id}`" type="">{{$t('nav.menuPlan')}}</b-button>
                     <b-button icon-right="pencil" @click="editFacility(props.row)"/>
                     <b-button type="is-danger" @click="deleteFacility(props.row)" icon-right="delete"/>
                 </b-table-column>

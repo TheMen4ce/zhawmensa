@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h2 class="title">{{$t('nav.menuPlan')}}</h2>
         <b-select v-model="selectedMenuPlan" placeholder="no menu plans" required>
             <option
                     v-for="option in menuPlans"

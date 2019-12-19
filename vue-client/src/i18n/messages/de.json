@@ -8,7 +8,8 @@
   "nav": {
     "logout": "Abmelden",
     "facilities": "Einrichtungen",
-    "profile": "Benutzer Profil"
+    "profile": "Benutzer Profil",
+    "menuPlan": "Menü Plan"
   },
   "login": {
     "username": "Benutzername",

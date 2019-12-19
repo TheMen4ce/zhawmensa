@@ -43,7 +43,7 @@
 </template>
 
 <script>
-    import AuthService from '../services/auth';
+    import AuthService from '../services/auth.service';
     import toaster from "../services/toaster.service";
 
     export default {

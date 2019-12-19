@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="title">{{$t('nav.facilities')}}</h2>
+        <h2 class="title is-4">{{$t('nav.facilities')}}</h2>
         <button class="button is-primary"
                 @click="newFacility()">
             {{$t('facilities.new')}}

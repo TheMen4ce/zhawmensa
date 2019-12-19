@@ -5,9 +5,15 @@
     "update": "Update",
     "delete": "Delete"
   },
+  "nav": {
+    "logout": "Logout",
+    "facilities": "Facilities",
+    "profile": "User Profile"
+  },
   "login": {
     "username": "Username",
-    "password": "Password"
+    "password": "Password",
+    "login": "Login"
   },
   "facilities": {
     "new": "New Facility",

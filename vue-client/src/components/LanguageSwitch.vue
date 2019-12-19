@@ -5,6 +5,7 @@
         </option>
     </b-select>
 </template>
+
 <script>
     import translationService from '../services/translation.service'
 

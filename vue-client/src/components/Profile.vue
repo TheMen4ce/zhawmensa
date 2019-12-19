@@ -33,7 +33,7 @@
         <br>
         <div class="card">
             <div class="card-content">
-                <p class="title is-4">Authorities</p>
+                <h2 class="title is-4">Authorities</h2>
                 <ul>
                     <li v-for="(role,index) in currentUser.roles" :key="index">{{role}}</li>
                 </ul>

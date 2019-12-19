@@ -11,7 +11,7 @@
                          password-reveal
                          required/>
             </b-field>
-            <button class="button is-primary" type="submit">Login</button>
+            <button class="button is-primary" type="submit">{{$t('login.login')}}</button>
         </form>
     </section>
 </template>

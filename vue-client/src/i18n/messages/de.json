@@ -5,9 +5,15 @@
     "update": "Aktualisieren",
     "delete": "Löschen"
   },
+  "nav": {
+    "logout": "Abmelden",
+    "facilities": "Einrichtungen",
+    "profile": "Benutzer Profil"
+  },
   "login": {
     "username": "Benutzername",
-    "password": "Passwort"
+    "password": "Passwort",
+    "login": "Anmelden"
   },
   "facilities": {
     "new": "Neue Einrichtung",

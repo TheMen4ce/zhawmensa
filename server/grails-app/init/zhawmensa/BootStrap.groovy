@@ -9,6 +9,14 @@ class BootStrap {
 
     def init = { servletContext ->
 
+        createFirstUserIfNotExisting()
+
+        if (Environment.current != Environment.TEST) {
+            createFacilitiesIfEmpty()
+        }
+    }
+
+    private void createFirstUserIfNotExisting() {
         if (AppUser.findAll().size() == 0) {
             Role adminRole = new Role(authority: 'ROLE_ADMIN').save()
             AppUser adminUser = new AppUser(username: 'admin', password: 'admin').save()
@@ -16,10 +24,6 @@ class BootStrap {
             AppUserRole.withTransaction {
                 AppUserRole.create(adminUser, adminRole)
             }
-        }
-
-        if (Environment.current != Environment.TEST) {
-            createFacilitiesIfEmpty()
         }
     }
 

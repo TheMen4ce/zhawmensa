@@ -27,8 +27,6 @@ spring:
             additional-exclude:
                 - '*.gsp'
                 - '**/*.gsp'
-                - '*.gson'
-                - '**/*.gson'
                 - 'logback.groovy'
                 - '*.properties'
 management:

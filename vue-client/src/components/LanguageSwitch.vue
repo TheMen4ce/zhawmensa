@@ -1,5 +1,5 @@
 <template>
-    <b-select name="language" v-on:input="changeLanguage" v-model="selectedLang" placeholder="select language" icon="translate">
+    <b-select v-on:click.native="dontBubbleUp" name="language" v-on:input="changeLanguage" v-model="selectedLang" placeholder="select language" icon="translate">
         <option v-for="lang in supportedLanguages" :key="lang">
             {{lang}}
         </option>
@@ -21,6 +21,9 @@
             }
         },
         methods: {
+            dontBubbleUp(e){
+                e.stopPropagation();
+            },
             changeLanguage() {
                 translationService.changeLanguage(this.selectedLang);
             }

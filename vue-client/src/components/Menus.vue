@@ -9,6 +9,7 @@
                 </td>
             </tr>
         </table>
+        <EmptyState v-if="!isLoading && menus.length === 0" :text="$t('menu.noFound')"/>
     </div>
 </template>
 
@@ -16,10 +17,12 @@
     import menuPlanService from "../services/menuPlan.service";
     import Menu from "./Menu";
     import dayjs from "dayjs"
+    import EmptyState from "./EmptyState";
 
     export default {
         props: ['menuPlanId'],
         components: {
+            EmptyState,
             Menu
         },
         data() {

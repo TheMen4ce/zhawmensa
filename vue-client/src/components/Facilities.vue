@@ -29,14 +29,7 @@
             </template>
 
             <template slot="empty" v-if="!isLoading">
-                <section class="section">
-                    <div class="content has-text-grey has-text-centered">
-                        <p>
-                            <b-icon icon="emoticon-sad" size="is-large"/>
-                        </p>
-                        <p>{{$t('facilities.noFound')}}</p>
-                    </div>
-                </section>
+                <EmptyState :text="$t('facilities.noFound')"/>
             </template>
         </b-table>
     </div>
@@ -47,9 +40,10 @@
     import toaster from '../services/toaster.service'
     import FacilityModal from "./FacilityModal";
     import MenuImport from "./MenuImport";
+    import EmptyState from "./EmptyState";
 
     export default {
-        components: {MenuImport},
+        components: {EmptyState, MenuImport},
         data() {
             return {
                 facilities: [],

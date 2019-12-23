@@ -32,7 +32,8 @@
     "sideDishes": "Beilagen",
     "internalPrice": "Preis Intern",
     "externalPrice": "Preis Extern",
-    "studentPrice": "Preis Studenten"
+    "studentPrice": "Preis Studenten",
+    "noFound": "Keine Menüs in dieser Woche!"
   },
   "menuPlan": {
     "deleted": "Ein Menüplan weniger!",

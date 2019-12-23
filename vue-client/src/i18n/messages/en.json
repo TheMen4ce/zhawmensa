@@ -32,7 +32,8 @@
     "sideDishes": "Side Dishes",
     "internalPrice": "Internal Price",
     "externalPrice": "External Price",
-    "studentPrice": "Student Price"
+    "studentPrice": "Student Price",
+    "noFound": "No menus this week!"
   },
   "menuPlan": {
     "deleted": "Minus one menu plan!",

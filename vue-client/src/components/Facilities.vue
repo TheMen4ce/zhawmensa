@@ -22,7 +22,7 @@
                 </b-table-column>
 
                 <b-table-column>
-                    <b-button tag="router-link" :to="`/menuplan/${props.row.id}`" type="">{{$t('nav.menuPlan')}}</b-button>
+                    <b-button tag="router-link" :to="`/gastronomicFacility/${props.row.id}/menuPlan`" type="">{{$t('nav.menuPlan')}}</b-button>
                     <b-button icon-right="pencil" @click="editFacility(props.row)"/>
                     <b-button type="is-danger" @click="deleteFacility(props.row)" icon-right="delete"/>
                 </b-table-column>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-    import service from '../services/facilities.service'
+    import service from '../services/gastronomicFacility.service'
     import toaster from '../services/toaster.service'
     import FacilityModal from "./FacilityModal";
     import MenuImport from "./MenuImport";

@@ -11,7 +11,7 @@ export const router = new Router({
     mode: 'history',
     routes: [
         {path: '/', component: Facilities},
-        {path: '/menuplan/:facilityId', component: MenuPlan},
+        {path: '/gastronomicFacility/:facilityId/menuPlan', component: MenuPlan},
         {path: '/login', component: Login},
         {path: '/profile', component: Profile},
     ]

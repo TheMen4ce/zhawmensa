@@ -1,0 +1,15 @@
+import zhawmensa.GastronomicFacility
+
+model {
+    GastronomicFacility gastronomicFacility
+}
+json {
+    name gastronomicFacility.name
+    menuPlans gastronomicFacility.menuPlans.collect {
+        [
+            id: it.id,
+            calendarWeek: it.calendarWeek,
+            year: it.year
+        ]
+    }
+}

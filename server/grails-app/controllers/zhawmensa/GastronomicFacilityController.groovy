@@ -15,6 +15,12 @@ class GastronomicFacilityController implements ExceptionHandlingController {
         respond gastronomicFacilityService.findAll()
     }
 
+    def show(){
+        long id = params.id as long
+        GastronomicFacility facility = gastronomicFacilityService.findById(id)
+        render template: 'withMenuPlan', model: [gastronomicFacility: facility]
+    }
+
     def save(GastronomicFacility facility) {
         respond gastronomicFacilityService.store(facility)
     }

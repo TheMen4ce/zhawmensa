@@ -10,10 +10,6 @@ class MenuController implements ExceptionHandlingController {
 
     MenuService menuService
 
-    def findAllByMenuPlanId() {
-        respond menuService.findAllByMenuPlanId(params.id as long)
-    }
-
     def save(Menu menu) {
         Menu createdMenu = menuService.store(menu)
         respond createdMenu

@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h2 class="title is-4">{{$t('nav.menuPlan')}}</h2>
+        <h2 class="title is-4">{{$t('nav.menuPlan')}} {{facility.name}}</h2>
         <b-loading :is-full-page="false" :active.sync="isLoading"/>
         <b-select class="menu-plan-select" v-model="selectedMenuPlan" :placeholder="$t('menuPlan.noMenuPlan')"
                   required>
             <option
-                    v-for="option in menuPlans"
+                    v-for="option in facility.menuPlans"
                     :key="option.id"
                     :value=option>
                 {{ option.year }} | KW {{ option.calendarWeek }}
@@ -19,7 +19,8 @@
 </template>
 
 <script>
-    import service from "../services/menuplan.service";
+    import facilityService from "../services/gastronomicFacility.service";
+    import menuPlanService from "../services/menuPlan.service";
     import Menus from "./Menus";
     import toaster from "../services/toaster.service";
 
@@ -30,7 +31,7 @@
         data() {
             return {
                 isLoading: false,
-                menuPlans: [],
+                facility: {},
                 selectedMenuPlan: undefined
             }
         },
@@ -40,20 +41,20 @@
         methods: {
             fetchMenuPlan() {
                 this.isLoading = true;
-                service.getAll(this.$route.params.facilityId).then(res => {
-                    this.menuPlans = res.data;
-                    this.selectedMenuPlan = this.menuPlans[0];
+                facilityService.show(this.$route.params.facilityId).then(res => {
+                    this.facility = res.data;
+                    this.selectedMenuPlan =  this.facility.menuPlans[0];
                     this.isLoading = false;
                 })
             },
             deletePlan() {
-                service.delete(this.selectedMenuPlan.id)
+                menuPlanService.delete(this.selectedMenuPlan.id)
                     .then(() => {
                         toaster.success(this.$t('menuPlan.deleted'));
-                        let deletedMenuPlan = this.menuPlans.find(m => m.id === this.selectedMenuPlan.id);
-                        const idx = this.menuPlans.indexOf(deletedMenuPlan);
-                        this.menuPlans.splice(idx, 1);
-                        this.selectedMenuPlan = this.menuPlans[0];
+                        let deletedMenuPlan = this.facility.menuPlans.find(m => m.id === this.selectedMenuPlan.id);
+                        const idx = this.facility.menuPlans.indexOf(deletedMenuPlan);
+                        this.facility.menuPlans.splice(idx, 1);
+                        this.selectedMenuPlan = this.facility.menuPlans[0];
                     })
             }
         }

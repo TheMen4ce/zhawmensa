@@ -30,7 +30,7 @@
 </template>
 
 <script>
-    import service from '../services/facilities.service'
+    import service from '../services/gastronomicFacility.service'
 
     export default {
         props: {

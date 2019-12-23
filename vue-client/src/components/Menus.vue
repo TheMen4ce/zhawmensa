@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import service from "../services/menu.service";
+    import menuPlanService from "../services/menuPlan.service";
     import Menu from "./Menu";
     import dayjs from "dayjs"
 
@@ -43,7 +43,7 @@
             },
             fetchMenus() {
                 this.isLoading = true;
-                service.getAll(this.menuPlanId)
+                menuPlanService.findAllMenus(this.menuPlanId)
                     .then(response => {
                         this.menus = response.data;
                         this.days = [...new Set(this.menus.map(menu => menu.date))];

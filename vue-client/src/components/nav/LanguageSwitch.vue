@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import translationService from '../services/translation.service'
+    import translationService from '../../services/translation.service'
 
     export default {
         data() {

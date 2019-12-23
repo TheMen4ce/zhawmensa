@@ -7,8 +7,8 @@
 </template>
 
 <script>
-    import service from "../services/import.service";
-    import toaster from "../services/toaster.service";
+    import service from "../../services/import.service";
+    import toaster from "../../services/toaster.service";
 
     export default {
         data() {

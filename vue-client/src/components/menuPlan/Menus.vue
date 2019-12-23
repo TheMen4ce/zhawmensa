@@ -14,10 +14,10 @@
 </template>
 
 <script>
-    import menuPlanService from "../services/menuPlan.service";
+    import menuPlanService from "../../services/menuPlan.service";
     import Menu from "./Menu";
     import dayjs from "dayjs"
-    import EmptyState from "./EmptyState";
+    import EmptyState from "../shared/EmptyState";
 
     export default {
         props: ['menuPlanId'],

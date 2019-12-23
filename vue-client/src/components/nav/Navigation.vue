@@ -2,7 +2,7 @@
     <b-navbar>
         <template slot="brand">
             <b-navbar-item tag="a" href="https://www.zhaw.ch/engineering/">
-                <img alt="ZHAW School of Engineering Logo" src="../assets/ZHAW_Logo.jpg">
+                <img alt="ZHAW School of Engineering Logo" src="../../assets/ZHAW_Logo.jpg">
             </b-navbar-item>
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <h1 class="title">Mensa Master</h1>

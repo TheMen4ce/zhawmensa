@@ -19,10 +19,10 @@
 </template>
 
 <script>
-    import facilityService from "../services/gastronomicFacility.service";
-    import menuPlanService from "../services/menuPlan.service";
+    import facilityService from "../../services/gastronomicFacility.service";
+    import menuPlanService from "../../services/menuPlan.service";
     import Menus from "./Menus";
-    import toaster from "../services/toaster.service";
+    import toaster from "../../services/toaster.service";
 
     export default {
         components: {

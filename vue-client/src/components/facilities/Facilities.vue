@@ -36,11 +36,11 @@
 </template>
 
 <script>
-    import service from '../services/gastronomicFacility.service'
-    import toaster from '../services/toaster.service'
+    import service from '../../services/gastronomicFacility.service'
+    import toaster from '../../services/toaster.service'
     import FacilityModal from "./FacilityModal";
     import MenuImport from "./MenuImport";
-    import EmptyState from "./EmptyState";
+    import EmptyState from "../shared/EmptyState";
 
     export default {
         components: {EmptyState, MenuImport},

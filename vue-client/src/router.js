@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from './components/Login.vue';
-import Facilities from "./components/Facilities";
-import MenuPlan from "./components/MenuPlan";
-import Profile from "./components/Profile";
+import Login from './components/user/Login.vue';
+import Facilities from "./components/facilities/Facilities";
+import MenuPlan from "./components/menuPlan/MenuPlan";
+import Profile from "./components/user/Profile";
 
 Vue.use(Router);
 

@@ -32,8 +32,7 @@ class BootStrap {
             GastronomicFacility.withNewTransaction {
                 GastronomicFacility.saveAll(
                         new GastronomicFacility(name: "Cafeteria Bibliothek", locationId: 7900, provider: Provider.SV),
-                        // currently the SV service returns an error
-                        // new GastronomicFacility(name: "Cafeteria Eulachpassage", locationId: 7901, provider: Provider.SV),
+                        new GastronomicFacility(name: "Cafeteria Eulachpassage", locationId: 7901, provider: Provider.SV),
                         new GastronomicFacility(name: "Mensa Grüental", locationId: 7902, provider: Provider.SV),
                         new GastronomicFacility(name: "Cafeteria Mäander", locationId: 7903, provider: Provider.SV),
                         new GastronomicFacility(name: "Mensa St.Georgenplatz", locationId: 7904, provider: Provider.SV),

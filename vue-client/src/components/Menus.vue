@@ -1,6 +1,7 @@
 <template>
     <div class="table-container">
-        <table class="table">
+        <b-loading :is-full-page="false" :active.sync="isLoading"/>
+        <table class="table" v-if="!isLoading">
             <tr v-for="day in days" :key="day">
                 <td>{{getFormattedDay(day)}}</td>
                 <td class="menu-cell" v-for="menu in getMenusFor(day)" :key="menu.id">
@@ -24,7 +25,8 @@
         data() {
             return {
                 menus: [],
-                days: []
+                days: [],
+                isLoading: false
             }
         },
         mounted() {
@@ -40,10 +42,12 @@
                 return dayjs(day).format('DD.MM.YYYY')
             },
             fetchMenus() {
+                this.isLoading = true;
                 service.getAll(this.menuPlanId)
                     .then(response => {
                         this.menus = response.data;
                         this.days = [...new Set(this.menus.map(menu => menu.date))];
+                        this.isLoading = false;
                     })
             },
             getMenusFor(day) {

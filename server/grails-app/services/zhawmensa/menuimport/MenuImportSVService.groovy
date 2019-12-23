@@ -22,8 +22,16 @@ class MenuImportSVService implements MenuImport {
         List<Menu> menus = []
 
         Node rootNode = xmlParsingService.parseXmlFrom(SERVICE_URL + "?branch=${facility.locationId}&authstring=" + AUTH_STRING)
-        throwIfError(rootNode, facility)
+        if (rootNode.@status == "error") {
+            log.error("Couldn't load data for ${facility.name} with ID ${facility.locationId}. " +
+                    "SV Service threw an error: ${rootNode.@errormsg}")
+        } else {
+            importRootNode(rootNode, menus)
+        }
+        return menus
+    }
 
+    private void importRootNode(Node rootNode, menus) {
         Map<String, String> labelMap = readObjectsIntoIdMap((List<Node>) rootNode.settings.offers.offer)
         Map<String, String> priceMap = readObjectsIntoIdMap((List<Node>) rootNode.settings.prices.price)
 
@@ -34,19 +42,17 @@ class MenuImportSVService implements MenuImport {
                 try {
                     menus.add(importMenu(menu, menuDate, labelMap, priceMap))
                 } catch (Exception ignored) {
-                    throw new BusinessException("Couldn't parse response in SV Service import! Corrupt data in node: ${menu}")
+                    log.info("Skipping imparsable menu in SV Service import! Node: ${menu}")
                 }
             }
         }
-
-        return menus
     }
 
     /**
      * Reads objects with an ID and description (i.e. prices or offers) into a map for later use
-     * @return Map<"id", "description">
+     * @return Map<    "id", "description"    >
      */
-    private Map<String,String> readObjectsIntoIdMap(List<Node> nodes) {
+    private Map<String, String> readObjectsIntoIdMap(List<Node> nodes) {
         return nodes.collectEntries { Node offer ->
             [(offer.@id): offer.description.text()]
         }
@@ -58,9 +64,9 @@ class MenuImportSVService implements MenuImport {
         menu.title = menuNode.title.text().trim()
         menu.label = labelMap.get(menuNode.@offer)
         menu.sideDishes = menuNode.trimmings.text().trim()
-        menu.studentPrice = getPrice(menuNode, priceMap.find{it.value == 'STUD'}.key)
-        menu.internalPrice = getPrice(menuNode, priceMap.find{it.value == 'INT'}.key)
-        menu.externalPrice = getPrice(menuNode, priceMap.find{it.value == 'EXT'}.key)
+        menu.studentPrice = getPrice(menuNode, priceMap.find { it.value == 'STUD' }.key)
+        menu.internalPrice = getPrice(menuNode, priceMap.find { it.value == 'INT' }.key)
+        menu.externalPrice = getPrice(menuNode, priceMap.find { it.value == 'EXT' }.key)
 
         return menu
     }
@@ -77,11 +83,5 @@ class MenuImportSVService implements MenuImport {
         }
     }
 
-    private void throwIfError(Node rootNode, GastronomicFacility facility) {
-        if (rootNode.@status == "error") {
-            throw new BusinessException("Couldn't load data for ${facility.name} with ID ${facility.locationId}. " +
-                    "SV Service threw an error: ${rootNode.@errormsg}")
-        }
-    }
 
 }

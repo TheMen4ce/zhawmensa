@@ -1,11 +1,18 @@
 package zhawmensa
 
+import ch.qos.logback.classic.Level
+import ch.qos.logback.classic.spi.LoggingEvent
+import ch.qos.logback.core.Appender
 import grails.testing.services.ServiceUnitTest
+import org.mockito.ArgumentCaptor
 import org.mockito.Mockito
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 import spock.lang.Specification
-import zhawmensa.exceptions.BusinessException
 import zhawmensa.menuimport.MenuImportSVService
 import zhawmensa.menuimport.XmlParsingService
+
+
 
 class MenuImportSVServiceSpec extends Specification implements ServiceUnitTest<MenuImportSVService> {
     GastronomicFacility facility = new GastronomicFacility(name: "Test", locationId: 1234)
@@ -32,15 +39,26 @@ class MenuImportSVServiceSpec extends Specification implements ServiceUnitTest<M
         menus.last().sideDishes == "Stellen Sie sich Ihr Menü nach Lust und Laune selber zusammen\nPreis pro 100g"
     }
 
-    void "should throw business exception on SV service error"(){
+    void "should log error on SV service error"() {
         given:
         Node node = new XmlParser().parse(new File("src/test/resources/SVXMLErrorResponse.xml"))
-        Mockito.when(mockImportService.parseXmlFrom(Mockito.any())).thenReturn(node)
 
         when:
+        Mockito.when(mockImportService.parseXmlFrom(Mockito.any())).thenReturn(node)
+        Appender mockedAppender = Mockito.mock(Appender)
+        Logger logger = LoggerFactory.getLogger("zhawmensa.menuimport.MenuImportSVService")
+        logger.addAppender(mockedAppender)
+
         service.importMenus(facility)
 
+        ArgumentCaptor<Appender> argumentCaptor = ArgumentCaptor.forClass(Appender)
+        Mockito.verify(mockedAppender,
+                Mockito.times(1)).doAppend(argumentCaptor.capture())
+        logger.detachAppender(mockedAppender)
+
         then:
-        thrown(BusinessException.class)
+        argumentCaptor.getAllValues().size() == 1
+        List<LoggingEvent> loggingEvents = argumentCaptor.getAllValues() as List<LoggingEvent>
+        loggingEvents[0].getLevel() == Level.ERROR
     }
 }

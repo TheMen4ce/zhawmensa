@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="card">
-            <div class="card-content">
+            <div class="card-content user-input-area">
                 <h2 class="title is-4">Profile</h2>
                 <b-field label="Username" :message="{'Username cannot contain special characters!' : !usernameContainsNoSpecialChars()}"
                          :type="{'is-danger' : !usernameContainsNoSpecialChars()}">
@@ -91,3 +91,9 @@
         }
     };
 </script>
+
+<style>
+    .user-input-area{
+        max-width: 30rem;
+    }
+</style>

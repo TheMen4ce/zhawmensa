@@ -3,12 +3,20 @@ package zhawmensa
 import grails.testing.mixin.integration.Integration
 import grails.testing.services.ServiceUnitTest
 import grails.validation.ValidationException
+import org.mockito.Mockito
 import spock.lang.Specification
 import zhawmensa.domain.GastronomicFacilityService
 import zhawmensa.exceptions.ObjectNotFoundException
 
 @Integration
-class GastronomicFacilityServiceISpec extends Specification implements ServiceUnitTest<GastronomicFacilityService>{
+class GastronomicFacilityServiceISpec extends Specification implements ServiceUnitTest<GastronomicFacilityService> {
+
+    I18nService mockI18nService = Mockito.mock(I18nService.class)
+
+    void setup() {
+        service.i18nService = mockI18nService
+        Mockito.when(mockI18nService.getMessage(Mockito.any(), Mockito.any())).thenReturn("")
+    }
 
     void "should not store gastronomic facility with missing value"() {
         given:

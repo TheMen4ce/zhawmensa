@@ -39,11 +39,5 @@ export const auth = {
             state.status = {};
             state.user = null;
         },
-        registerSuccess(state) {
-            state.status = {};
-        },
-        registerFailure(state) {
-            state.status = {};
-        }
     }
 };

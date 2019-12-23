@@ -5,11 +5,11 @@ model {
 }
 json {
     name gastronomicFacility.name
-    menuPlans gastronomicFacility.menuPlans.collect {
+    menuPlans gastronomicFacility.menuPlans.collect {menuPlan ->
         [
-            id: it.id,
-            calendarWeek: it.calendarWeek,
-            year: it.year
+            id: menuPlan.id,
+            calendarWeek: menuPlan.calendarWeek,
+            year: menuPlan.year
         ]
-    }
+    }.sort{menuPlan -> menuPlan.year + menuPlan.calendarWeek}.reverse()
 }

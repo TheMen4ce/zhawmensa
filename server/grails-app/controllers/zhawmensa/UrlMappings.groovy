@@ -15,7 +15,6 @@ class UrlMappings {
         post "/user/changeUsername"(controller: 'user', action:'changeUsername')
         post "/user/changePassword"(controller: 'user', action:'changePassword')
 
-        "/"(controller: 'application', action:'index')
         "500"(view: '/error')
         "404"(view: '/notFound')
     }

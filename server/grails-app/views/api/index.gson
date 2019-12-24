@@ -1,0 +1,47 @@
+import zhawmensa.GastronomicFacility
+import zhawmensa.Menu
+import zhawmensa.MenuPlan
+
+model {
+    List<GastronomicFacility> gastronomicFacilities
+    int year
+    int week
+}
+
+json {
+    menuPlans gastronomicFacilities.collect { facility ->
+        MenuPlan plan = facility.menuPlans.find { menuPlan -> menuPlan.calendarWeek == week && menuPlan.year == year }
+        if (!plan) {
+            return [error: "no menu plan for year $year week $week!"]
+        }
+        Map<Date, List<Menu>> menus = plan.menus.groupBy { menu -> menu.date }
+        [
+            id: plan.id,
+            gastronomicFacilityIds: [facility.id],
+            calendarWeek: [
+                    week: week,
+                    year: year
+            ],
+            menus: menus.collect { date, dishes ->
+                [
+                    offeredOn: date,
+                    dishes: dishes.collect { menu ->
+                        [
+                            id: menu.id,
+                            label: menu.label,
+                            name: menu.title,
+                            studentPrice: menu.studentPrice,
+                            internalPrice: menu.internalPrice,
+                            externalPrice: menu.externalPrice,
+                            sideDishes: menu.sideDishes.split("\n").collect {
+                                [
+                                    name: it
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
